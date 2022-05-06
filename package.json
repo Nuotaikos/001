@@ -1,0 +1,24 @@
+{
+  "name": "001",
+  "version": "1.0.0",
+  "description": "",
+  "main": "002ndciklai.js",
+  "scripts": {
+    "dev": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nuotaikos/001.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nuotaikos/001/issues"
+  },
+  "homepage": "https://github.com/Nuotaikos/001#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
