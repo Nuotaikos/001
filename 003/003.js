@@ -8,12 +8,12 @@
 
 // while () {
 //  if(++a > 100) {
-//    console.log('avarija');
+//   console.log('avarija');
 //   break; //saugiklis
 // }
 // }
 
-// for (let i = 0; i < 10; i++) { // for viduje uzdeklaruotas i (i =0)
+// for (let i = 0; i < 10; i++) { // for viduje uzdeklaruotas i (i=0)
 
 //   if (i == 2) { //nutruks nuo antro
 //     break;

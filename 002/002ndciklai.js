@@ -122,25 +122,56 @@
 // // console.log(nelyginiaiSk);
 
 // // 13 console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje). Ciklą kartoti tol, kol neiškris abu vienodi skaičiai;
-// console.log("13----ne vienoje eiluteje");
-// let g = 0;
-// let h = 0;
+console.log("13----gaunasi tik 0");
+let g = 0;
+let h = 0;
 
-// while (g !== 0 && h !== 0) {
-//   g = Math.floor(Math.random() * 10);
-//   h = Math.floor(Math.random() * 10);
-// }
-// console.log(g);
-// console.log(h);
+while (g != 0 && h != 0) {
+  g = Math.floor(Math.random() * 10);
+  h = Math.floor(Math.random() * 10);
+}
+console.log(`${g}, ${h}`);
+
 // // 14 console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje). Skaičiuoti abiejų skaičių sumas skirtinguose kintamuosiuose (skaičiuoti skaičių stulpelių sumas). Ciklą kartoti tol, kol kiekviena iš sumų bus daugiau nei 100;
-// console.log("14------------------------");
-// let tuscias1 = "";
+console.log("14------------------------");
+function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
-// while (tuscias1) {
-//   let randomSk = Math.floor(Math.random() * 10);
-//   tuscias1++;
-//   console.log(randomSk);
-// }
+let skaiciuSuma1 = 0;
+let skaiciuSuma2 = 0;
 
-// // 15 console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje). Ciklą kartoti kol bus sugeneruota po tris arba daugiau nelyginių skaičių  (skaičiai atskiruose stulpeliuose)
-// console.log("15------------------------");
+while (skaiciuSuma1 < 100 || skaiciuSuma2 < 100) {
+  let randomSkaiciai1 = rand(0, 10);
+  let randomSkaiciai2 = rand(0, 10);
+  skaiciuSuma1 = randomSkaiciai1 + skaiciuSuma1;
+  skaiciuSuma2 = randomSkaiciai2 + skaiciuSuma2;
+  console.log(`${randomSkaiciai1}, ${randomSkaiciai2}`);
+  console.log(`${skaiciuSuma1} skaiciu yra pirmame stulpelyje`);
+  console.log(`${skaiciuSuma2} skaiciu yra antrame stulpelyje`);
+}
+
+
+// 15 console.log’e, naudojant ciklą atspausdinti po porą skirtingų atsitiktinių skaičių nuo 0 iki 10 (abu skaičiai vienoje eilutėje). Ciklą kartoti kol bus sugeneruota po tris arba daugiau nelyginių skaičių  (skaičiai atskiruose stulpeliuose)
+console.log("15------------------------");
+let skaiciuok1 = 0;
+let skaiciuok2 = 0;
+
+do {
+  let randomSk1 = rand(0, 10);
+  let randomSk2 = rand(0, 10);
+  console.log(`${randomSk1}, ${randomSk2}`);
+
+  if (randomSk1 % 2 != 0) {
+    skaiciuok1++;
+  }
+  if (randomSk2 % 2 != 0) {
+    skaiciuok2++;
+  }
+if (skaiciuok1 >= 3 && skaiciuok2 >= 3) {
+  break;
+}
+}
+while (skaiciuok1 != 3 || skaiciuok2 != 3);
