@@ -171,15 +171,50 @@ if (zvakiuKiekis >= 1000 && zvakiuKiekis < 2000) {
 
 //7. Naudokite funkcija rand(). Sukurkite tris kintamuosius su atsitiktinėm reikšmėm nuo 0 iki 100. Paskaičiuokite jų aritmetinį vidurkį. Ir aritmetinį vidurkį atmetus tas reikšmes, kurios yra mažesnės nei 10 arba didesnės nei 90. Abu vidurkius atspausdinkite su console.log()
 console.log("7------------");
-function random() {
-  const random = Math.floor(Math.random() * 101);
-  return random;
-}
-const kintamieji = random[(k, l, m)];
-console.log(kintamieji);
+// function random() {
+//   const random = Math.floor(Math.random() * 101);
+//   return random;
+// }
+// const kintamieji = random[(k, l, m)];
+// console.log(kintamieji);
 
 // const KintamujuSuma = 0;
 // console.log(k1, k2, k3);
 // if (k1 + k2 + k3 / length) {
 //   aritmetinisVidurkis = console.log();
 // }
+
+function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+skaicius1 = rand(0, 100);
+skaicius2 = rand(0, 100);
+skaicius3 = rand(0, 100);
+// console.log(skaicius1);
+// console.log(skaicius2);
+// console.log(skaicius3);
+
+let aritmetinisVidurkis = (skaicius1 + skaicius2 + skaicius3) / 3;
+console.log('Aritmetinis vidurkis = ' + aritmetinisVidurkis);
+
+let suma = 0;
+let daliklis = 0;
+
+if (skaicius1 > 10 || skaicius1 < 90) {
+  suma = suma + skaicius1;
+  daliklis = 1 + daliklis;
+}
+if (skaicius2 > 10 || skaicius2 < 90) {
+  suma += skaicius2;
+  daliklis += 1;
+}
+if (skaicius3 > 10 || skaicius3 < 90) {
+  suma += skaicius3;
+  daliklis += 1;
+}
+
+// console.log(suma);
+// console.log(daliklis);
+console.log('Vidurkis atmetus tas reikšmes, kurios yra mažesnės nei 10 arba didesnės nei 90 =' + suma/daliklis);
