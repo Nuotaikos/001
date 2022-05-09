@@ -2,7 +2,7 @@
   "name": "001",
   "version": "1.0.0",
   "description": "",
-  "main": "002ndciklai.js",
+  "main": "001ndif.js",
   "scripts": {
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
