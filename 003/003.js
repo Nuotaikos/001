@@ -79,3 +79,81 @@ for (let i = 0; i < 5; i++) {
     console.log(`Dabar eina maziukas ratukas: ${i + 1} ratas`);
   }
 }
+
+// function getRandomIntInclusive(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+
+// leksteje gali buti rand 10 iki 30 kasniu kotleto
+//kasnis susikramto per rand nuo 1 iki 10
+//kasnis susikramto neaisku kaip (naudojam do, tikrinti po kiekvieno krimstelejimo)
+// console.log("uzdavinys------");
+
+// const kotletoKasniai = rand(10, 30);
+// let kotletasSuvalgytasPer = 0; // 0 krimstelejimu
+// // ++ yra senos reiksmes redagavimas, pridedam +1
+
+// for (let i = 0; i < kotletoKasniai; i++) {
+//   //kol i maziau uz kotleto kasnius, tol jis sukasi
+
+//   // const gabaliuksSukramtomas = rand(1, 10); //paskaiciuoja per kiek sita gabaliuka sukramtom
+//   // kotletasSuvalgytasPer += gabaliuksSukramtomas;
+
+//   do {
+//     kotletasSuvalgytasPer++; //1krimstelejimas
+//   } while (rand(0, 4)); //imituojam tikimybe. Ciklas ntraukiamas kai 0. ar bigti kramtyti?
+// }
+
+// console.log(kotletasSuvalgytasPer); //per kiek sukramtai
+
+function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// leksteje gali buti 10...30 kasniu kotleto
+// kasnis susikramto per rand 1...10
+// kasnis susikramto neaisku kaip- tikrinti po kiekvieno krimstelejimo
+
+const kotletoKasniai = rand(10, 30);
+let kotletasSuvalgytasPer = 0;
+
+for (let i = 0; i < kotletoKasniai; i++) {
+  // const gabaliukasSukramtomas = rand(1, 10);
+  // kotletasSuvalgytasPer += gabaliukasSukramtomas;
+
+  do {
+    kotletasSuvalgytasPer++;
+  } while (rand(0, 2));
+}
+
+console.log(kotletasSuvalgytasPer);
+
+// 153 eilute pakeista
+// function rand(min, max) {
+//   min = Math.ceil(min);
+//   max = Math.floor(max);
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+
+// // leksteje gali buti 10...30 kasniu kotleto
+// // kasnis susikramto per rand 1...10
+// // kasnis susikramto neaisku kaip- tikrinti po kiekvieno krimstelejimo
+
+// const kotletoKasniai = rand(10, 30);
+// let kotletasSuvalgytasPer = 0;
+
+// for (let i = 0; i < kotletoKasniai; i++) {
+//   // const gabaliukasSukramtomas = rand(1, 10);
+//   // kotletasSuvalgytasPer += gabaliukasSukramtomas;
+
+//   let r;
+//   do {
+//     r = rand(0, 2);
+//     kotletasSuvalgytasPer++;
+//   } while (r);
+// }
+
+// console.log(kotletasSuvalgytasPer);
