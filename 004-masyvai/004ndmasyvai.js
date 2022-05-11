@@ -202,14 +202,19 @@ for (let i = 0; 0 < masyvas.lenght; i++) {
 //8 Sugeneruokite masyvą, kurio indeksus sudarytų pirmo 6 uždavinio masyvo reikšmės, o jo reikšmės iš būtų antrojo masyvo.
 
 //9 Sugeneruokite 10 skaičių masyvą pagal taisyklę: Du pirmi skaičiai- atsitiktiniai nuo 5 iki 25. Trečias, pirmo ir antro suma. Ketvirtas- antro ir trečio suma. Penktas trečio ir ketvirto suma ir t.t.
-let masyvas10 = [];
-for (let i = 0; i < 2; i++) {
-  masyvas10.push(rand(5, 25))
+let masyvas10 = [rand(5, 25), randrand(5, 25)];
+for (let i = 2; i < 10; i++) {
+  masyvas10.push(masyvas10[i - 1] + masyvas10[i - 2])
   console.log(masyvas10[i]);
 }
-for (let i = 0; i + 1 < 10; i++) {
-  masyvas10.push(masyvas10[i] + masyvas10[i + 1])
-}
-console.log(masyvas10[i]);
+// for (let i = 0; i + 1 < 10; i++) {
+//   masyvas10.push(masyvas10[i] + masyvas10[i + 1])
+// }
+console.log(masyvas10);
 
-// m
+// const ma = [rand(1, 3), rand(1, 3)];
+// for (let i = 2; i < 10; i++) { // nuo 2 prasideda, nes pirmos dvi reiksmes virsuje jau israsytos
+//   ma.push(ma[i - 1] + ma[i - 2]);
+// }
+
+// console.table(ma);
