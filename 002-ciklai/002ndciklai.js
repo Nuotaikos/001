@@ -180,20 +180,20 @@ for (let i = 0; i < 5; i++) {
   console.log('Labas');
 }
 // 2.console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 0 1 2 3 4 (vienas skaičius vienoje eilutėje);
-for (let i=0; i <= 4; i++) {
+for (let i = 0; i <= 4; i++) {
   console.log(i);
 }
 // 3. console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 0 10 20 30 40 (vienas skaičius vienoje eilutėje);
 let a = 0;
 
-for (let i = 0; i <= 40; i+= 10) {
-console.log(i);
-while (a) {
- if(++a > 100) {
-  console.log('avarija');
-  break; //saugiklis
-}
-}
+for (let i = 0; i <= 40; i += 10) {
+  console.log(i);
+  while (a) {
+    if (++a > 100) {
+      console.log('avarija');
+      break; //saugiklis
+    }
+  }
 }
 // 4. console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 49 50 51 52 53 (vienas skaičius vienoje eilutėje);
 for (let i = 49; i <= 53; i++) {
@@ -205,7 +205,7 @@ for (let i = 4; i >= 0; i--) {
 }
 // 6. console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skaičius 0 2 4 6 8 (vienas skaičius vienoje eilutėje, daugybos konsolėje nenaudoti!, if’ų nenaudoti, ciklas for);
 console.log('------------');
-for (let i =0; i <= 8; i+=2) {
+for (let i = 0; i <= 8; i += 2) {
   console.log(i);
 }
 // 7. console.log’e, naudojant ciklą penkiose eilutėse atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 (vienas skaičius vienoje eilutėje);
@@ -230,7 +230,7 @@ let sum1 = 0;
 
 while (sum1 <= 100) {
   sum1 += rand(1, 10)
-  console.log(sum1); 
+  console.log(sum1);
 }
 // 10 console.log’e, naudojant ciklą atspausdinti skirtingus atsitiktinius skaičius nuo 0 iki 10 (vienas skaičius vienoje eilutėje). Paskutinis atspausdintas skaičius turi būti 5 arba 7; Suskaičiuoti kiek ciklų prasisuko;
 console.log("10 ------------------------");
@@ -261,7 +261,7 @@ console.log("12------------------------");
 
 let nelyginiaiS = 0;
 
-While (nelyginiaiS) {
+While(nelyginiaiS) {
 
 }
 console.log('egzas');
