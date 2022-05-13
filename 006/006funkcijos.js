@@ -1,3 +1,8 @@
+function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
 //1 Parašykite funkciją, kurios argumentas būtų tekstas, kuris yra atspausdinamas su console.log;
 console.log('1----------------------');
 const x = 'Gera diena';
@@ -17,9 +22,44 @@ tekstas1('Gera diena', 6);
 
 //4 Parašykite funkciją, kuri skaičiuotų, iš kiek sveikų skaičių jos argumentas dalijasi be liekanos (išskyrus vienetą ir patį save)
 console.log('4----------------------');
-function dalijasi()
+
+function sveikiSk(skaicius) {
+  let count = 0;
+
+  for (let i = 2; i < skaicius; i++) {
+    if (skaicius % i === 0 && i !== 1) {
+      count++;
+    }
+  }
+
+  return `Skaičius ${skaicius} dalijasi be liekanos iš ${count} (išskyrus vienetą ir patį save).`;
+}
+
+console.log(sveikiSk(34));
+
 //5 Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77. Išrūšiuokite masyvą pagal daliklių be liekanos kiekį mažėjimo tvarka, panaudodami ketvirto uždavinio funkciją.
 console.log('5----------------------');
+// const w = [];
+// for (let i = 0; i < 100; i++) {
+//   w.push(rand(33, 77));
+// }
+// function sveikiSk(skaicius) {
+//   let count = 0;
+//   for (let i = 2; i < skaicius; i++) {
+//     if (skaicius % i === 0 && i !== 1) {
+//       count++;
+//     } count.sort((a, b) => {
+//       if (a > b) {
+//         return - 1;
+//       }
+//       if (a < b) {
+//         return 1;
+//       }
+//       return 0;
+//     });
+//     console.table(count);
+//   }
+// }
 //6 Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 333 iki 777. Naudodami 4 uždavinio funkciją iš masyvo ištrinkite pirminius skaičius.
 console.log('6----------------------');
 //7 Sugeneruokite atsitiktinio (nuo 10 iki 20) ilgio masyvą, kurio visi, išskyrus paskutinį, elementai yra atsitiktiniai skaičiai nuo 0 iki 10, o paskutinis masyvas, kuris generuojamas pagal tokią pat salygą kaip ir pirmasis masyvas. Viską pakartokite atsitiktinį nuo 10 iki 30  kiekį kartų. Paskutinio masyvo paskutinis elementas yra lygus 0;

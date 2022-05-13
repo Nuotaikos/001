@@ -71,7 +71,7 @@ console.log(masyvasCopy);
 
 // Papildykite masyvą papildomais 10 elementų su reikšmėmis nuo 5 iki 25, kad bendras masyvas padidėtų iki indekso 39;
 console.log("2e----------------");
-console.log();
+
 
 for (let i = 0; i < 10; i++) {
   let random = rand(5, 25)
