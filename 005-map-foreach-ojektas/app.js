@@ -90,18 +90,34 @@
 
 
 // //map
-// const map = new Map(); //tusti skliausteliai
+const map = new Map(); //tusti skliausteliai
 
-// map.set('Miau', 5); // unikalus pavadinimai, kartotis negali
-// map.set('Pilkis', 8);
-// map.set('Pukis', 4);
+map.set('Murka', 5); // unikalus pavadinimai, kartotis negali
+map.set('Pilkis', 8);
+map.set('Pukis', 4);
 
-// console.log(map.get('Pilkis')); //get, kai nori kazka rasti
-// console.log(map.delete('Pilkis')); //trinti
-// console.log(map.has('Pilkis')); //ar turi Pilki?
+console.log(map.get('Pilkis')); //get, kai nori kazka rasti
+console.log(map.delete('Pilkis')); //trinti
+console.log(map.has('Pilkis')); //ar turi Pilki?
 
-// const masmap = [...map]; //tampa masyvu. Masyvas masyve
+const masmap = [...map]; //tampa masyvu. Masyvas masyve
 
 // console.log(masmap.size)
 
 // // ilgis, dyds skaiciuojams map.size
+// SET
+const se = new Set();
+
+se.add('cat') //galima deti tik unikalias reiksmes. Unikaliu dalyku rinkinys. Objektams taikomas kaip kopijos
+se.add('dog')
+
+se.delete('dog') //istrinti
+
+console.log(se.has({ t: 'cat' })); // ar yra sitas katinas? JO nera
+
+console.log(se);
+
+//isrinkti uniklias reiksmes is masyvo
+const setas = new Set();
+const reiksmes = [4, 8, 2, 7, 7, 4];
+console.log(new Set(reiksmes));
