@@ -119,13 +119,19 @@ for (let i = 0; i < pinigine.length; i++) {
 console.table(kitaPinigine);
 
 // 11.	Korteles skyrelyje sudėlioti (išrūšiuoti) pagal abėcėlę;
+console.log('11----------------------');
 korteles.sort();
 console.log(korteles);
 // 12.	Į kortelių skyrelį pridėti mokėjimo kortelių 'MasterCard', 'Visa' (su rand generuokite atsitiktines reikšmes 'MasterCard' arba 'Visa' ir rašykite į masyvą) iš skirtingų bankų tiek, kad skyrelis (masyvo ilgis) pasidarytų lygus 20;
+console.log('12----------------------');
+const naujosMokejimoKorteles = ['MasterCard', 'Visa']
 for (let i = 0; i < kitaPinigine.length; i++) {
-
+  // kitaPinigine.push(rand(naujosMokejimoKorteles[i]);
+  naujosMokejimoKorteles.push(kitaPinigine[Math.floor(Math.random() * 20)]);
 }
+console.log(naujosMokejimoKorteles);
 // 13.	Paskaičiuokite, kokio tipo kortelių ('MasterCard' arba 'Visa') yra daugiau;
+
 // 14.	Sukurkite masyve (piniginėje) ketvirtą elementą (skyrelį) į kurį įdėkite 10 loterijos bilietų, kurių numerius sugeneruokite atsitiktinai su rand funkcija nuo 1000000000 iki 9999999999;
 // 15.	Loterijos bilietų masyvą išrūšiuoti nuo didžiausio numerio iki mažiausio;
 // 16.	Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
