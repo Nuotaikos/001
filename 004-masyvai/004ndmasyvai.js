@@ -173,6 +173,29 @@ for (i = 0; i < unikaliR1 - 1; i++) {
     unikaliR1++
 }
 console.log(unikaliR1);
+console.log("5 destytojo----------------");
+
+const longSet1 = new Set()
+do {
+  longSet1.add(rand(100, 999));
+} while (longSet1.size < 100);
+
+const longArray1 = [...longSet1];
+
+const longSet2 = new Set()
+do {
+  longSet2.add(rand(100, 999));
+} while (longSet2.size < 100);
+
+const longArray2 = [...longSet2];
+
+
+
+const freakArray = [];
+longArray1.forEach((v, i) => {
+  freakArray[v] = longArray2[i];
+});
+
 
 //6 Sugeneruokite masyvą, kuris būtų sudarytas iš reikšmių, kurios yra pirmame 6 uždavinio masyve, bet nėra antrame 6 uždavinio masyve.
 console.log('6----------------------');

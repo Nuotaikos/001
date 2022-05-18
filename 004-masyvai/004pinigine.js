@@ -131,10 +131,53 @@ for (let i = 0; i < kitaPinigine.length; i++) {
 }
 console.log(naujosMokejimoKorteles);
 // 13.	Paskaičiuokite, kokio tipo kortelių ('MasterCard' arba 'Visa') yra daugiau;
+console.log('13--skaiciu vienodas visada--------------------');
+let countMasterCard = 0;
+let countVisa = 0;
 
+for (let i = 0; i < korteles.length; i++) {
+  if (korteles[i] === 'masterCard') {
+    count++
+  }
+  if (korteles[i] === 'visa') {
+    count++
+  }
+}
+if (countMasterCard > countVisa) {
+  console.log('Daugiau Mastercard korteliu');
+}
+if (countMasterCard < countVisa) {
+  console.log('Daugiau Visa korteliu');
+} else {
+  console.log('Korteliu skaicius vienodas');
+}
 // 14.	Sukurkite masyve (piniginėje) ketvirtą elementą (skyrelį) į kurį įdėkite 10 loterijos bilietų, kurių numerius sugeneruokite atsitiktinai su rand funkcija nuo 1000000000 iki 9999999999;
+console.log('14----------------------');
+const naujasSkyrelis = [];
+
+
+for (let i = 0; i < 10; i++) {
+  const loterijosBilietai = rand(1000000000, 9999999999);
+  naujasSkyrelis.push(loterijosBilietai);
+}
+kitaPinigine.push(naujasSkyrelis);
+console.log(naujasSkyrelis);
+console.log(kitaPinigine);
 // 15.	Loterijos bilietų masyvą išrūšiuoti nuo didžiausio numerio iki mažiausio;
+console.log('15----------------------');
+
+naujasSkyrelis.sort((a, b) => {
+  if (a > b) {
+    return - 1;
+  }
+  if (a < b) {
+    return 1;
+  }
+  return 0;
+});
+console.table(naujasSkyrelis);
 // 16.	Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
+
 // 17.	Patikrinti ar ką nors laimėjote. Bilieto numerius dalinkite iš 777 ir jeigu numeris išsidalins be liekanos - jūs laimėjote! Suskaičiuokite, kiek buvo laimingų bilietų.
 // 18.	 Sukurkite penktą skyrelį ir į jį sudėkite nuotraukas: ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'] ir jas išrūšiuokite pagal žodžių ilgį taip, kad pirma eitų trumpiausi žodžiai;
 
