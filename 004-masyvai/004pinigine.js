@@ -177,7 +177,42 @@ naujasSkyrelis.sort((a, b) => {
 });
 console.table(naujasSkyrelis);
 // 16.	Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
+console.log('16----------------------');
+const smulkusEurai = rand(3, 10);
+sumaSmulkusEurai = 0;
 
+do {
+  eurai.push(smulkusEurai);
+  sumaSmulkusEurai += smulkusEurai;
+
+} while (sumaSmulkusEurai !== 500);
+console.log(eurai);
+
+
+// let s = 1000;
+
+// for (let i = 0; i < eurai.length; i++) {
+//   eurai.push(rand(3, 10))
+//   if (--s === 0) {
+//     console.log('BR')
+//     break;
+//   }
+// }
+console.log(kitaPinigine);
 // 17.	Patikrinti ar ką nors laimėjote. Bilieto numerius dalinkite iš 777 ir jeigu numeris išsidalins be liekanos - jūs laimėjote! Suskaičiuokite, kiek buvo laimingų bilietų.
 // 18.	 Sukurkite penktą skyrelį ir į jį sudėkite nuotraukas: ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'] ir jas išrūšiuokite pagal žodžių ilgį taip, kad pirma eitų trumpiausi žodžiai;
 
+
+// 16.p.	Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
+console.log('16 p ---------------------');
+
+const mazosKup = rand(3, 10);
+sumaMK1 = 0;
+
+do {
+  eurai.push(mazosKup);
+  sumaMK1 = sumaMK1 + mazosKup;
+}
+while (sumaMK1 !== 500) {
+  console.log(eurai);
+}
