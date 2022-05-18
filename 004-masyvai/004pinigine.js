@@ -152,43 +152,43 @@ if (countMasterCard < countVisa) {
   console.log('Korteliu skaicius vienodas');
 }
 // 14.	Sukurkite masyve (piniginėje) ketvirtą elementą (skyrelį) į kurį įdėkite 10 loterijos bilietų, kurių numerius sugeneruokite atsitiktinai su rand funkcija nuo 1000000000 iki 9999999999;
-console.log('14----------------------');
-const naujasSkyrelis = [];
+// console.log('14----------------------');
+// const naujasSkyrelis = [];
 
 
-for (let i = 0; i < 10; i++) {
-  const loterijosBilietai = rand(1000000000, 9999999999);
-  naujasSkyrelis.push(loterijosBilietai);
-}
-kitaPinigine.push(naujasSkyrelis);
-console.log(naujasSkyrelis);
-console.log(kitaPinigine);
+// for (let i = 0; i < 10; i++) {
+//   const loterijosBilietai = rand(1, 9);
+//   naujasSkyrelis.push(loterijosBilietai);
+// }
+// kitaPinigine.push(naujasSkyrelis);
+// console.log(naujasSkyrelis);
+// console.log(kitaPinigine);
 // 15.	Loterijos bilietų masyvą išrūšiuoti nuo didžiausio numerio iki mažiausio;
 console.log('15----------------------');
 
-naujasSkyrelis.sort((a, b) => {
-  if (a > b) {
-    return - 1;
-  }
-  if (a < b) {
-    return 1;
-  }
-  return 0;
-});
-console.table(naujasSkyrelis);
+// naujasSkyrelis.sort((a, b) => {
+//   if (a > b) {
+//     return - 1;
+//   }
+//   if (a < b) {
+//     return 1;
+//   }
+//   return 0;
+// });
+// console.table(naujasSkyrelis);
 // 16.	Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
-console.log('16----------------------');
-const smulkusEurai = rand(3, 10);
-sumaSmulkusEurai = 0;
+// console.log('16----------------------');
+// const smulkusEurai = rand(3, 10);
+// sumaSmulkusEurai = 0;
 
-do {
-  eurai.push(smulkusEurai);
-  sumaSmulkusEurai += smulkusEurai;
+// do {
+//   eurai.push(smulkusEurai);
+//   sumaSmulkusEurai += smulkusEurai;
 
-} while (sumaSmulkusEurai !== 500);
-console.log(eurai);
+// } while (sumaSmulkusEurai !== 500);
+// console.log(eurai);
 
-
+/// saugiklis-----------------
 // let s = 1000;
 
 // for (let i = 0; i < eurai.length; i++) {
@@ -200,19 +200,44 @@ console.log(eurai);
 // }
 console.log(kitaPinigine);
 // 17.	Patikrinti ar ką nors laimėjote. Bilieto numerius dalinkite iš 777 ir jeigu numeris išsidalins be liekanos - jūs laimėjote! Suskaičiuokite, kiek buvo laimingų bilietų.
+console.log('17 ---------------------');
+// let laimingiBilietai = 0;
+// for (let i = 0; i < kitaPinigine.length; i++);
+// if (kitaPinigine[i] % 777) {
+//   laimingiBilietai++;
+//   console.log('Laimingas bilietas yra ' + laimingiBilietai);
+// }
+// console.log(laimingiBilietai);
+
+let laimingiBilietai = 0;
+for (let i = 0; i < kitaPinigine.length[i]; i++) {
+  if (kitaPinigine[i] % 777 === 0) {
+    laimingiBilietai++;
+    console.log(`Laimingas bilietas! $ {laimingiBilietai}`);
+  }
+}
+console.log('Laimingas bilietas yra ' + laimingiBilietai);
 // 18.	 Sukurkite penktą skyrelį ir į jį sudėkite nuotraukas: ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'] ir jas išrūšiuokite pagal žodžių ilgį taip, kad pirma eitų trumpiausi žodžiai;
+console.log('18 ---------------------');
+const nuotraukos = ['šuo', 'katė', 'automobilis', 'namas', 'kiemas'];
+nuotraukos.sort();
+console.table(nuotraukos);
+console.log(nuotraukos.sort((a, b) => a.length - b.length));
+kitaPinigine.push(nuotraukos.sort((a, b) => a.length - b.length));
 
 
-// 16.p.	Į piniginės popierinių pinigų skyrelį įdėti 500 pinigų mažom kupiūrom ( generuoti atsitiktinius skaičius nuo 3 iki 10 ir dėti kaip naujus elementus, kol įdėta suma bus lygi 500);
-console.log('16 p ---------------------');
 
-const mazosKup = rand(3, 10);
-sumaMK1 = 0;
 
-do {
-  eurai.push(mazosKup);
-  sumaMK1 = sumaMK1 + mazosKup;
-}
-while (sumaMK1 !== 500) {
-  console.log(eurai);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
