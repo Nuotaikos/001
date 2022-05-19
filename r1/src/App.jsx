@@ -1,34 +1,44 @@
+import { useState } from 'react';
 import './App.css';
-import Hello from './Components/009/Hello';
-import Kurmis from './Components/009/kurmis';
-import Lape from './Components/009/lape';
-import Meska from './Components/009/meska';
-import Zebras from './Components/009/zebras';
-import Zuikis from './Components/009/zuikis';
-import ZuikisTekstas from './Components/009/Zuikis1';
-// arba rankiniu budu ivedam: import Hello from './Components/009/Hello'
 
-function rand(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
-const d = rand(1, 2);
 
 function App() {
+  const [spalva, setSpalva] = useState('yellow');
+  const [skaicius, setSkaicius] = useState(1);
+  //state reiksme, kitas funkcija
 
+  // const mygtukas = () => {
+  //   console.log('As grazus mygtukas');
+  //   return mygtukoBrolis;
+  // }
+  // const mygtukoBrolis = () => {
+  //   console.log('As grazus mygtuko brolis');
+  //   return
+  // }
+  const skaiciuotuvas = () => setSkaicius(s => s + 1);
+
+  const beArgumentu = () => {
+    console.log('beArgumentu');
+  }
+  const suArgumentu = ka => {
+    console.log('suArgumentu' + ka);
+  }
+  const keistiSpalva = () => {
+    // const naujaSpalva = spalva === 'yellow' ? 'pink' : 'yellow'; BLOGAI. Galima daryti, tik jei aplikacija maza
+
+    setSpalva(senaSpalva => senaSpalva === 'yellow' ? 'pink' : 'yellow');
+    // setSpalva(naujaSpalva);
+    //po setSpalvos pakeitimo momentaliai nepasikeicia, gali uztrukti
+    // console.log(spalva);
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <Hello spalva='green' bg='yellow' />
-        <Hello spalva='black' bg='white'></Hello>
-        <Hello spalva='blue' br='pink'></Hello>
-        <Kurmis spalva='grey' skaicius={4} ></Kurmis>
-        <Zuikis spalva='pink' tekstas='Kaip gyvas?' />
-        <ZuikisTekstas tekstas='baltas' />
-        <Zebras checkIfTwo={d} />
-        <Lape tekstas1='lape rudoji' tekstas2='lape snape' ></Lape>
-        <Meska tekstas3='Miskas' tekstas4='pilnas zveriu' tekstoSpalva='yellow' ></Meska>
+        <h1 style={{ color: spalva }}>State {skaicius}</h1>
+        <button onClick={beArgumentu}>Be!</button>
+        <button onClick={() => suArgumentu('Labas')}>Su!</button>
+        <button onClick={keistiSpalva}>Kita spalva</button>
+        <button onClick={skaiciuotuvas}>+1</button>
       </header>
     </div>
   );
@@ -36,7 +46,12 @@ function App() {
 
 export default App;
 
-//privaloma uzdaryti tagus su ></img>
-//class -> className yra tas pats (is HTML ir )
+//Funkcija () skliausteliu pridejimas is karto paleidzia funkcija
+//onClick - paleidineja funkcija.
+// onClick virsuje du galimi budai su arba be argumento
 
-// props - funkcijos argmentas
+//state - komponento viduje.
+//hug - reactas paraso funkcija useeState, o ji padeda susikurti state komponento viduje
+//turim const [a, b] ir priskiriame masyva [1,2] a guas 1, b gaus 2.
+//  const a=[1,2][0] const b=[1,2][1]
+//state negalima keisti, i ji pushint. Daryti kopija i ja sukelti ir tada ja perkelti
