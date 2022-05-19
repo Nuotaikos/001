@@ -45,9 +45,28 @@
   background-color: crimson;
   margin: 7px;
   border-radius: 7px;
+  font-size: medium;
 }
 
 .kvc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 77px;
+  height: 77px;
+  background-color: crimson;
+  margin: 7px;
+  border-radius: 50%;
+  font-size: medium;
+  
+}
+.circleC {
   display: flex;
   justify-content: center;
   align-items: center;

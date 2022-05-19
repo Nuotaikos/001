@@ -1,51 +1,41 @@
 import { useState } from 'react';
 import './App.css';
+import randColor from './Functions/randColor';
 
-const katinukai = ['Pilkis', 'Murkis', 'Rainis'];
+const dogs = ['šuo', 'šunius', 'Bobikas', 'kudlius', 'Šarikas', 'avigalvis'];
+dogs.sort();
 
 function App() {
-  const [spalva, setSpalva] = useState('yellow');
-  const [skaicius, setSkaicius] = useState(1);
-  const [kv, setKv] = useState([]);
-  //state reiksme, kitas funkcija
 
-  // const mygtukas = () => {
-  //   console.log('As grazus mygtukas');
-  //   return mygtukoBrolis;
-  // }
-  // const mygtukoBrolis = () => {
-  //   console.log('As grazus mygtuko brolis');
-  //   return
-  // }
-  const skaiciuotuvas = ka => setSkaicius(s => s + ka);
-
-  const beArgumentu = () => {
-    console.log('beArgumentu');
-  }
-  const suArgumentu = ka => {
-    console.log('suArgumentu' + ka);
-  }
-  const keistiSpalva = () => {
-    // const naujaSpalva = spalva === 'yellow' ? 'pink' : 'yellow'; BLOGAI. Galima daryti, tik jei aplikacija maza
-
-    setSpalva(senaSpalva => senaSpalva === 'yellow' ? 'pink' : 'yellow');
-    // setSpalva(naujaSpalva);
-    //po setSpalvos pakeitimo momentaliai nepasikeicia, gali uztrukti
-    // console.log(spalva);
-  }
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ color: spalva }}>State {skaicius}</h1>
-        {
-          katinukai.map((k, i) => <div key={i}>{k}</div>)
-        }
-
-        <button onClick={beArgumentu}>Be!</button>
-        <button onClick={() => suArgumentu('Labas')}>Su!</button>
-        <button onClick={keistiSpalva}>Kita spalva</button>
-        <button onClick={() => skaiciuotuvas(1)}>+1</button>
-        <button onClick={() => skaiciuotuvas(-1)}>-1</button>
+        <div className="kvc">
+          {
+            dogs.map((d, i) => <div className="kv" key={i}>{i}. {d}</div>)
+          }
+        </div>
+        <div className="kvc">
+          {
+            dogs.map((d, i) => <div className="circle" key={i}>{i}. {d}</div>)
+          }
+        </div>
+        <div className='kvc'>
+          {
+            dogs.map((d, i) => <div className={i % 2 === 0 ? 'kv' : 'circle'} key={i}>{i}. {d}</div>)
+          }
+        </div>
+        <div className='kvc'>
+          {
+            dogs.map((d, i) => <div className={i % 2 === 0 ? 'kv' : 'circle'} key={i}>{i}. {d}</div>)
+          }
+        </div>
+        <div className='kvc'>
+          {
+            dogs.map((d, i) => <div className={dogs.lenght > 6 ? 'green' : 'red'} key={i}>{i}. {d}</div>)
+          }
+          {/* txt.charAt(0).toUpperCase() + txt.substr(1); */}
+        </div>
       </header>
     </div>
   );
@@ -53,13 +43,12 @@ function App() {
 
 export default App;
 
-//Funkcija () skliausteliu pridejimas is karto paleidzia funkcija
-//onClick - paleidineja funkcija.
-// onClick virsuje du galimi budai su arba be argumento
+// 1. Atvaizduoti masyvą dogs. Kiekvienas šuo atskirame kvadrate.
 
-//state - komponento viduje.
-//hooks - reactas paraso funkcija useeState, o ji padeda susikurti state komponento viduje
-//turim const [a, b] ir priskiriame masyva [1,2] a guas 1, b gaus 2.
-//  const a=[1,2][0] const b=[1,2][1]
-//state negalima keisti, i ji pushint. Daryti kopija i ja sukelti ir tada ja perkelti
-//list -
+// 2. Atvaizduoti masyvą dogs. Kiekvienas šuo atskirame apskritime. Šunys turi būti išrūšiuoti nuo ilgiausio žodžio iki trumpiausio, o apskritimai sunumeruoti nuo 1 iki galo.
+
+// 3. Atvaizduoti masyvą dogs. Poriniuose indeksuose esančius šunis atvaizduoti kvadratuose, neporinius apskritime.
+
+// 4. Atvaizduoti masyvą dogs. Šunis, kurie prasideda didžiąja raide praleisti (neatvaizduoti).
+
+// 5. Naudojant masyvą dogs atvaizduoti skaičius, kurie yra lygūs žodžių masyve ilgiui. Skaičius, didesnius nei 6 atvaizduoti žaliai, kitus raudonai.
