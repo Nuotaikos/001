@@ -15,7 +15,7 @@ function App() {
   //   console.log('As grazus mygtuko brolis');
   //   return
   // }
-  const skaiciuotuvas = () => setSkaicius(s => s + 1);
+  const skaiciuotuvas = ka => setSkaicius(s => s + ka);
 
   const beArgumentu = () => {
     console.log('beArgumentu');
@@ -38,7 +38,8 @@ function App() {
         <button onClick={beArgumentu}>Be!</button>
         <button onClick={() => suArgumentu('Labas')}>Su!</button>
         <button onClick={keistiSpalva}>Kita spalva</button>
-        <button onClick={skaiciuotuvas}>+1</button>
+        <button onClick={() => skaiciuotuvas(1)}>+1</button>
+        <button onClick={() => skaiciuotuvas(-1)}>-1</button>
       </header>
     </div>
   );
