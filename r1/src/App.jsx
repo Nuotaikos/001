@@ -2,40 +2,18 @@ import { useState } from 'react';
 import './App.css';
 import randColor from './Functions/randColor';
 
-const dogs = ['šuo', 'šunius', 'Bobikas', 'kudlius', 'Šarikas', 'avigalvis'];
-dogs.sort();
 
 function App() {
 
   return (
     <div className="App">
       <header className="App-header">
-        <div className="kvc">
-          {
-            dogs.map((d, i) => <div className="kv" key={i}>{i}. {d}</div>)
-          }
-        </div>
-        <div className="kvc">
-          {
-            dogs.map((d, i) => <div className="circle" key={i}>{i}. {d}</div>)
-          }
-        </div>
-        <div className='kvc'>
-          {
-            dogs.map((d, i) => <div className={i % 2 === 0 ? 'kv' : 'circle'} key={i}>{i}. {d}</div>)
-          }
-        </div>
-        <div className='kvc'>
-          {
-            dogs.map((d, i) => <div className={i % 2 === 0 ? 'kv' : 'circle'} key={i}>{i}. {d}</div>)
-          }
-        </div>
-        <div className='kvc'>
-          {
-            dogs.map((d, i) => <div className={dogs.lenght > 6 ? 'green' : 'red'} key={i}>{i}. {d}</div>)
-          }
-          {/* txt.charAt(0).toUpperCase() + txt.substr(1); */}
-        </div>
+        <section>
+          <div className="kvc">
+
+          </div>
+        </section>
+        <button onClick={circle}>Change</button>
       </header>
     </div>
   );
@@ -43,12 +21,15 @@ function App() {
 
 export default App;
 
-// 1. Atvaizduoti masyvą dogs. Kiekvienas šuo atskirame kvadrate.
+// REACT CLASS STATE
 
-// 2. Atvaizduoti masyvą dogs. Kiekvienas šuo atskirame apskritime. Šunys turi būti išrūšiuoti nuo ilgiausio žodžio iki trumpiausio, o apskritimai sunumeruoti nuo 1 iki galo.
 
-// 3. Atvaizduoti masyvą dogs. Poriniuose indeksuose esančius šunis atvaizduoti kvadratuose, neporinius apskritime.
+//1 Sukurti aplikaciją, kuri turi mygtuką change ir atvaizduoja apskritimą. Paspaudus mygtuką change apskritimas turi pavirsti į kvadratą, o paspaudus dar kartą vėl pavirsti apskritimu.
 
-// 4. Atvaizduoti masyvą dogs. Šunis, kurie prasideda didžiąja raide praleisti (neatvaizduoti).
+//2 Sukurti aplikaciją, kuri turi mygtukus change ir random bei atvaizduoja apskritimą su random skaičiumi viduje. Paspaudus change mygtuką apskritimas keičiasi į stačiakampį kaip pirmame uždavinyje, o paspaudus random mygtuką, skaičius pasikeičia į rand 5 - 25
 
-// 5. Naudojant masyvą dogs atvaizduoti skaičius, kurie yra lygūs žodžių masyve ilgiui. Skaičius, didesnius nei 6 atvaizduoti žaliai, kitus raudonai.
+//3 Sukurti aplikaciją, kuri turi mygtukus plus ir minus, bei atvaizduoja skaičių 0. Paspaudus plus mygtuką, skaičius padidėja 1, o paspaudus minus- sumažėja 3
+
+//4 Sukurti aplikaciją, kuri turi mygtuką add, kurį paspaudus vieną kartą atsiranda mėlynas kvadratas, paspaudus du - du kvadratai ir t.t.
+
+//5 Sukurti aplikaciją, kuri turi mygtukus add red, add blue ir reset. Paspaudus add red, prisideda raudonas kvadratas, paspaudus add blue - mėlynas ir t.t. Spaudinėjant prisideda vis daygiau kvadratų. Paspaudus reset viskas išsitrina
