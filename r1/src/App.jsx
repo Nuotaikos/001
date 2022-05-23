@@ -50,6 +50,21 @@ function App() {
     setRaudonaFigura(kv => kv.slice(-1, (kv.length - 1)));
     setMelynaFigura1(kv => kv.slice(-1, (kv.length - 1)));
   }
+  const mygtukas = () => {
+    console.log('grazusis mygtukas');
+  }
+  const [spalva, setSpalva] = useState('green');
+
+  const keistiSpalva = () => {
+    setSpalva(old => old === 'green' ? 'red' : 'green');
+    console.log(spalva);
+  }
+  const [numb, setNumb] = useState(1);
+  const skaiciuotuvas = ka => setNumb(s => s + ka);
+
+  const [num2, setNums2] = useState(0)
+  const minusuotuvas = () => setNums2(s => s - 1);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -81,6 +96,15 @@ function App() {
           <button onClick={addRaudona}>Add red</button>
           <button onClick={addMelyna}>Add blue</button>
           <button onClick={reset}>Reset</button>
+        </div>
+        <div>
+          <h1 style={{ color: spalva }}>lalala {numb}</h1>
+          <button onClick={() => skaiciuotuvas(1)}>+1</button>
+          <button onClick={() => skaiciuotuvas(-1)}>-1</button>
+          <h2 style={{ color: spalva }}>bkaljsi {num2}</h2>
+          <button onClick={minusuotuvas}>minusuok</button>
+          <button onClick={mygtukas}>Spausk</button>
+          <button onClick={keistiSpalva}>Kita spalva</button>
         </div>
       </header >
     </div >

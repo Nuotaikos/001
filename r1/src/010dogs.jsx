@@ -32,12 +32,12 @@ function App() {
         </div>
         <div className='kvc'>
           {
-            dogs.map((d, i) => <div className={dogs.lenght > 6 ? 'green' : 'red'} key={i}>{i}. {d}</div>)
-          }
-          {/* txt.charAt(0).toUpperCase() + txt.substr(1); */}
-        </div>
-      </header>
+            //   dogs.map((d, i) => dog[0] !== dog[0].toUpperCase() ? 'green' : 'red' < div className = 'circle' key = { i } > { dog }</div>:<div key={i}></div>)
+            // }
+            {/* txt.charAt(0).toUpperCase() + txt.substr(1); */ }
     </div>
+      </header >
+    </div >
   );
 }
 
