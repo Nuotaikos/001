@@ -1,3 +1,5 @@
+//STATE 010, 05.19
+
 import { useState } from 'react';
 import './App.scss';
 
@@ -13,6 +15,10 @@ function App() {
     setKv(k => [...k, randColor()]);
   }
 
+  const remKv = () => {
+    setKv(k => k.slice(1))
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -25,13 +31,14 @@ function App() {
           <div className='kvc'>
             {
               // kv.map((_, i) => <div className='kv' key={i}></div>) // be spalvu
-              kv.map((c, i) => <div className='kv' key={i} style={{ backgroundColor: c }} ></div>) // spalva pavadinta c raide ir pritaikyti stiliui
+              kv.map((c, i) => <div className='kv' key={i} style={{ backgroundColor: c }}>{i}</div>) // spalva pavadinta c raide ir pritaikyti stiliui. Irasius indeksa >{i}</div>), psausdins su numeriais
             }
 
           </div>
 
         }
         <button onClick={addKv}>Add</button>
+        <button onClick={remKv}>Rem</button>
       </header >
     </div >
   );
