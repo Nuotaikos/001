@@ -1,46 +1,46 @@
-//STATE 010, 05.19
-
-import { useState } from 'react';
+import Bala from "./Components/011/Bala";
 import './App.scss';
+import Tvenkinys from "./Components/011/Tvenkinys";
+// import Daiktas from "./Components/011/Daiktas";
 
-import randColor from './Functions/randColor';
-
-const katinai = ['Mu', 'Du', 'Liu'];
+const seaPlaners = [
+  { id: 1, type: 'man', name: 'Lina', color: 'blue' },
+  { id: 2, type: 'car', name: 'Opel', color: 'red' },
+  { id: 3, type: 'animal', name: 'Vilkas', color: 'green' },
+  { id: 4, type: 'fish', name: 'Ungurys', color: 'yellow' },
+  { id: 5, type: 'man', name: 'Tomas', color: 'green' },
+  { id: 6, type: 'animal', name: 'Bebras', color: 'red' },
+  { id: 7, type: 'animal', name: 'Barsukas', color: 'green' },
+  { id: 8, type: 'car', name: 'MB', color: 'blue' },
+  { id: 9, type: 'car', name: 'ZIL', color: 'red' },
+  { id: 10, type: 'man', name: 'Teta Toma', color: 'yellow' },
+];
 
 function App() {
-
-  const [kv, setKv] = useState([]);
-  const addKv = () => {
-    // setKv(k => [...k, 1]); //norint prideti kv reikia zinoti kiek kv buvo pries tai. K - senas masyvas. Darmo naujo kopija => [], idedam visus pries tai buvusius kvadratukus ...k (isardytas senas masyvas) ir irasom vieneta
-    setKv(k => [...k, randColor()]);
-  }
-
-  const remKv = () => {
-    setKv(k => k.slice(1))
-  }
 
   return (
     <div className="App">
       <header className="App-header">
-
-        {
-          // katinai - tik vienas zodis bet spausdins be tarpu
-          // katinai.map(k => <div key={k}>{k}</div>) //taip atspausdins stulpeliu, kad nebutu klaidos reikia ira5yti key={k}
-          // katinai.map((k, i) => <div key={i}>{k}</div>) //indeksas visada uniklaus
-
-          <div className='kvc'>
-            {
-              // kv.map((_, i) => <div className='kv' key={i}></div>) // be spalvu
-              kv.map((c, i) => <div className='kv' key={i} style={{ backgroundColor: c }}>{i}</div>) // spalva pavadinta c raide ir pritaikyti stiliui. Irasius indeksa >{i}</div>), psausdins su numeriais
-            }
-
-          </div>
-
-        }
-        <button onClick={addKv}>Add</button>
-        <button onClick={remKv}>Rem</button>
+        <Tvenkinys seaPlaners={seaPlaners}></Tvenkinys>
+        {/* <Daiktas seaPlaner={seaPlaner}></Daiktas> */}
+        <Bala seaPlaners={seaPlaners}></Bala>
       </header >
     </div >
   );
 }
 export default App;
+
+// 1 Sukurti Komponentą Bala ir jame atvaizduoti masyvą seaPlaners.
+
+// 2 Sukurti du komponentus Tvenkinys, Daiktas -  tėvinį ir vaikinį atitinkamai. Tvenkinys komponente du kartus panaudokite komponentą Daiktas atvaizduoti masyvą seaPlaners - vieną kartą poriniams kitą kartą neporiniams įrašams (pagal id, ne masyvo indeksą).
+
+// 3 Sukurti keturis komponentus. Jura, Valtis, Laivas, Sala. Jura tėvinis komponentas, kiti trys vaikiniai. Atvaizduoti masyvą seaPlaners pagal taisyklę: “man” - Valtis, “car” - Laivas, “animal” - Sala, “fish” - tiesiai Jura komponente (be jokio vaikinio komponento).
+
+// 4 Sukurti keturis komponentus Vandenynas, Tipas, Vardas, Spalva. Vandenynas tėvinis komponentas kiti trys vaikiniai. Vaikiniuose komponentuose atvaizduoti tą patį masyvą, tik išrūšiuotą pagal komponento vardą (pvz Tipas išrūšiuota pagal tipą ir t.t.).
+
+// 5 Sukurti penkis komponentus. Pasaulis, Namas, Narvas, Garazas ir Akvariumas. Pasaulis tėvinis komponentas, kiti keturi vaikiniai. Atvaizduoti masyvą seaPlaners pagal taisyklę: “man” - Namas, “car” - Garazas, “animal” - Narvas, “fish” - Akvariumas. Komponentas Pasaulis turi būti padalintas į dvi dalis- porinę ir neporinę (pagal id, ne masyvo indeksą). Visus keturis vaikinius komponentus panaudoti po du kartus - porinėje ir neporinėje dalyje, atvaizduojant porinius ir neporinius masyvo įrašus.
+
+// 6 Kiekviename uždavinyje galima susikurti kiek reikia papildomų komponentų.
+// 7 Visuose uždaviniuose name savybę reikia nudažyti spalva, kuri yra color savybėje.
+
+
