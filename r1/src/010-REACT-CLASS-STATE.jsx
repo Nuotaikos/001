@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
-import rand from '../../Functions/rand';
+import rand from './Functions/rand';
+
 
 
 
@@ -64,6 +65,7 @@ function App() {
 
   const [num2, setNums2] = useState(0)
   const minusuotuvas = () => setNums2(s => s - 1);
+
 
   return (
     <div className="App">
