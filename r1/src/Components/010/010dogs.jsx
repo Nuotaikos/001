@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import randColor from './Functions/randColor';
+import randColor from '../../Functions/randColor';
 
 const dogs = ['šuo', 'šunius', 'Bobikas', 'kudlius', 'Šarikas', 'avigalvis'];
 dogs.sort();

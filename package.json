@@ -20,5 +20,9 @@
   "homepage": "https://github.com/Nuotaikos/001#readme",
   "devDependencies": {
     "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "sass": "^1.52.1"
   }
 }
