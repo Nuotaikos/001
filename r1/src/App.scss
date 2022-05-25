@@ -138,3 +138,27 @@ button {
     transform: rotate(360deg);
   }
 }
+
+.green-field {
+  margin: 30px;
+  padding: 10px;
+  border: 4px dashed white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: greenyellow;
+
+}
+
+.buttons-field {
+  margin: 30px;
+  padding: 10px;
+  border: 4px dashed white;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

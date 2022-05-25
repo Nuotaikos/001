@@ -2,10 +2,47 @@ import { useEffect, useRef, useState } from 'react';
 import './App.scss';
 import rand from './Functions/rand';
 
+const cats = [
+
+  'Mulkis',
+
+  'Kakius',
+
+  'Pilkius',
+
+  'Balčius'
+
+];
+
+const dog = [
+
+  'Sniego',
+
+  'Dingo',
+
+  'Atsirado',
+
+  'Pifas',
+
+  'Bobikas'
+
+];
 function App() {
 
   const [kv, setKv] = useState(null);
   const istorija = useRef([]);
+  const [katinai, setkatinai] = useState([]);
+
+
+  const addCats = () => {
+    setkatinai(x => [...x, ...cats]);
+  }
+  const addDogs = () => {
+    setkatinai(dog);
+  }
+  const remDC = () => {
+    setkatinai([]);
+  }
 
   // PIRMAS KROVIMAS
   useEffect(() => {
@@ -25,7 +62,7 @@ function App() {
     const kiekis = rand(5, 10);
     const kvadratukai = [];
     for (let i = 0; i < kiekis; i++) {
-      kvadratukai.push('^o^');
+      kvadratukai.push('>^o^<');
     }
     setKv(k => {
       istorija.current.unshift(null === k ? [...kvadratukai] : [...k, ...kvadratukai])
@@ -64,6 +101,21 @@ function App() {
         <button onClick={prideti}>Pridėti</button>
         <button onClick={isvalyti}>Išvalyti</button>
         <button onClick={atgal}>Atgal</button>
+        <div className='green-field'>
+
+          {
+            katinai.map((c, i) => <div key={i}>{c}></div>)
+          }
+
+          <div className='buttons-field'>
+            <button onClick={addCats}>Katinu sarasas</button>
+            <button onClick={addDogs}>Sunu sarasas</button>
+            <button onClick={remDC}>Istrinti</button>
+
+          </div>
+
+        </div>
+
       </header>
     </div>
   );

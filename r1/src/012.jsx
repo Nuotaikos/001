@@ -18,6 +18,7 @@ function App() {
     setKv(k => k.slice(1));
   }
 
+
   useEffect(() => {
     setKv(JSON.parse(localStorage.getItem('kv') ?? '[]'));
   }, []);
