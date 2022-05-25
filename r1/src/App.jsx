@@ -1,27 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import './App.scss';
-import randColor from './Functions/randColor';
+import rand from './Functions/rand';
 
 function App() {
 
-  const [count, setCount] = useState(null);
   const [kv, setKv] = useState(null);
+  const istorija = useRef([]);
 
-  const mano = useRef(0);
-  const panda = useRef();
-
-  const addKv = () => {
-    setKv(k => [...k, randColor()]);
-  }
-
-  const remKv = () => {
-    setKv(k => k.slice(1));
-  }
-
+  // PIRMAS KROVIMAS
   useEffect(() => {
-    setKv(JSON.parse(localStorage.getItem('kv') ?? '[]'));
+    setKv(JSON.parse(localStorage.getItem('kv'))); // gali buti null arba []
   }, []);
 
+  // UZSAUGOS POKYCIUS
   useEffect(() => {
     if (null === kv) {
       return;
@@ -29,76 +20,56 @@ function App() {
     localStorage.setItem('kv', JSON.stringify(kv));
   }, [kv]);
 
-  useEffect(() => {
-    setCount(parseInt(localStorage.getItem('count') ?? 0));
-  }, []);
 
-  useEffect(() => {
-    if (null === count) {
-      return;
+  const prideti = () => {
+    const kiekis = rand(5, 10);
+    const kvadratukai = [];
+    for (let i = 0; i < kiekis; i++) {
+      kvadratukai.push('^o^');
     }
-    localStorage.setItem('count', count);
-  }, [count]);
-
-
-
-  const add = () => {
-    setCount(c => c + 1);
-    mano.current = mano.current + 3;
-    console.log(mano.current);
-    // const p = document.querySelector('#panda');
-    const p = panda.current;
-    console.log(p.dataset.panda);
+    setKv(k => {
+      istorija.current.unshift(null === k ? [...kvadratukai] : [...k, ...kvadratukai])
+      return null === k ? [...kvadratukai] : [...k, ...kvadratukai];
+    });
   }
 
-  const addCat = () => {
-    localStorage.setItem('katinukas', JSON.stringify(['Murka', 'Pilkis']));
+  const isvalyti = () => {
+    setKv([]);
   }
 
-  const getCat = () => {
-    console.log(JSON.parse(localStorage.getItem('katinukas')));
-  }
+  const atgal = () => {
 
-  const remCat = () => {
-    localStorage.removeItem('katinukas');
+    console.log('click')
+
+    if (istorija.current.length === 0) {
+      setKv([]);
+    }
+
+    const senas = istorija.current.shift();
+
+    setKv(senas);
   }
 
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>useRef LocalStorage {count}</h1>
-        <button onClick={add}>+1</button>
-        <button onClick={addCat}>Add Cat</button>
-        <button onClick={getCat}>Get Cat</button>
-        <button onClick={remCat}>Remove Cat</button>
-        <div ref={panda} data-panda="miega"></div>
-        <button onClick={addKv}>ADD []</button>
-        <button onClick={remKv}>REMOVE []</button>
+        <h1>PRAKTIMUMAS</h1>
         <div className="kvc">
           {
-            kv ? kv.map((c, i) => <div className="kv" key={i} style={{ backgroundColor: c }}>{i}</div>) : null
+            kv ? kv.map((k, i) => <div key={i} className="kv">{k}</div>) : null
           }
         </div>
+
+        <button onClick={prideti}>Pridėti</button>
+        <button onClick={isvalyti}>Išvalyti</button>
+        <button onClick={atgal}>Atgal</button>
       </header>
     </div>
   );
-
 }
 
 export default App;
 
-//useRef - norint apikacijoje tureti kintamaji, kad jis nebutu state
 
-// dataset - <p data -super-duper=22>, js pasieks si elementa per p.dataset.superDuper gausim 22
-//querySelector - neneudoti!!! pvz apacioje
-// const add = () => {
-//   setCount(c => c + 1)
-//   mano.current = mano.current + 3;
-//   console.log(mano.current);
-//   const p = ocument.querySelector('#panda');
-//   console.log(p.dataset.panda);
-
-//localStorage - narsykles futures > aplikacijose . localStorage
-{/* <button onClick={addCat}>Add Cat</button> //ikelti i localstorage
-<button onClick={getCat}>Get Cat</button> //isimti is localstorage.Jei nori issiimti kas neegzistuoja, gauni null */}
+// 1.Sukurti aplikaciją su mygtuku “Pridėti”, kurį paspaudus atsiranda rand 5-10 kvadratukai. Paspaudus dar kartą dar prisideda rand kvadratukų skaičius. Puslapį perkrovus kvadratukų skaičius pasilieka nepakitęs. Padaryti mygtuką “Išvalyti”, kurį paspaudus visi kvadratukai dingsta. Padaryti mygtuką “Atgal”, kurį paspaudus kvadratukų skaičius pasidaro lygus skaičiui, buvusiam prieš paspaudus mygtuką “Pridėti”, o paspaudus dar kartą grįžtama dar vienu žingsniu atgal (t.y. reikia sukurti “undo” funkcionalumą). Puslapiui persikrovus istorija yra užmirštama. Saugoma tik istorija iki puslapiui persikraunant. Į istoriją turi būti pridedami veiksmai tiek iš “Pridėti” tiek iš “Išvalyti” mygtukų paspaudimo.
