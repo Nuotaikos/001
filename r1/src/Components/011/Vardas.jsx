@@ -1,16 +1,16 @@
-// function Vardas({ seaPlaners }) {
-//   seaPlaners.sort((b, c) => {
+function Vardas({ seaPlaners }) {
+  seaPlaners.sort((a, b) => {
 
-//     if (a.name < b.name) {
-//       return -1;
-//     }
-//     if (a.name > b.name) {
-//       return 1;
-//     }
-//     return 0;
-//   });
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
 
-//   return seaPlaners.map((b, i) => <Vardas style={{ color: b.color }} key={i}{b.id} {b.name}></Vardas> : null)
-// }
+  return seaPlaners.map((b, i) => <div style={{ color: b.color }} key={i}>{b.name} {b.type}</div>)
+}
 
-// export default Vardas;
+export default Vardas;

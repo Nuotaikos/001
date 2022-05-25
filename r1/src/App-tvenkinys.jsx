@@ -24,10 +24,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>1---</h1>
         <Bala seaPlaners={seaPlaners}></Bala>
+        <h1>2---</h1>
         <Tvenkinys seaPlaners={seaPlaners}></Tvenkinys>
+        <h1>3---</h1>
         <Jura seaPlaners={seaPlaners}></Jura>
+        <h1>4---</h1>
         <Vandenynas seaPlaners={seaPlaners}></Vandenynas>
+        <h1>5---</h1>
         <Pasaulis seaPlaners={seaPlaners}></Pasaulis>
       </header >
     </div >
