@@ -40,7 +40,7 @@ function App() {
       <button onClick={() => setType('todos')}>Todos</button>
       <button onClick={() => setType('posts')}>Posts</button>
 
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
       <pre>{JSON.stringify(pos, null, 2)}</pre>
     </div>
   )
