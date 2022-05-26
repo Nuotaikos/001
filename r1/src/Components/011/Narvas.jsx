@@ -1,10 +1,10 @@
-function Narvas({ seaPlaners }) {
+function Narvas({ seaPlaner }) {
 
   return (
     <>
-      {
-        seaPlaners.map((b, i) => b.type === 'animal' ? <div style={{ color: b.color }} key={i}>{b.id} {b.type} {b.name} </div> : null)
-      }
+
+      <div style={{ color: seaPlaner.color }}>{seaPlaner.id} {seaPlaner.type} {seaPlaner.name} </div> )
+
     </>
   )
 }

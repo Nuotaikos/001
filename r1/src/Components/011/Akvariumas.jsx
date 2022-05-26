@@ -1,12 +1,11 @@
-function Akvariumas({ seaPlaners }) {
+function Akvariumas({ seaPlaner }) {
 
   return (
     <>
-      {
-        seaPlaners.map((b, i) => b.type === 'fish' ? <div style={{ color: b.color }} key={i}>{b.id} {b.type} {b.name} </div> : null)
-      }
+
+      <div style={{ color: seaPlaner.color }}>{seaPlaner.id} {seaPlaner.type} {seaPlaner.name} </div> )
+
     </>
   )
 }
-
 export default Akvariumas;
