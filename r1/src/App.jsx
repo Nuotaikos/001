@@ -8,6 +8,7 @@ import './App.scss';
 function App() {
 
   const [text, setText] = useState('');
+  const [select, setSelect] = useState('tree');
 
   const inputText = e => {
     setText(e.target.value + '-');
@@ -17,10 +18,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <input type="text" onChange={inputText} value={text} />
-        <h1>Formos</h1>
-        <div className="kvc">
 
-        </div>
+        <select value={select} onChange={e => setSelect(e.target.value)}>
+          <option value="one">Vienas</option>
+          <option value="two">Du</option>
+          <option value="tree">Trys</option>
+          <option value="ten">Daug</option>
+        </select>
+
         <button></button>
       </header>
     </div>
