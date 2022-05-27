@@ -19,14 +19,14 @@ function App() {
   }
 
   const go = id => {
-    setAvys(a => {
-      const avis = a.filter(av => av.id === id)[0];
-      avis.where = 'kirpykla';
-      const kitos = a.filter(av => av.id !== id);
-      return [...kitos, avis];
+    setAvys(a => {              //avinas padedamas i gala
+      const avis = a.filter(av => av.id === id)[0]; // pasiimam avi, kurios reikia
+      avis.where = 'kirpykla'; //nuvaziuoja i kirpykla
+      const kitos = a.filter(av => av.id !== id); // kitos avys, bet tos vienos avies
+      return [...kitos, avis]; //kitos avys + avis
     });
 
-    // setAvys(a => a.map(avis => avis.id === id ? {...avis, where: 'kirpykla'} : avis))
+    // setAvys(a => a.map(avis => avis.id === id ? {...avis, where: 'kirpykla'} : avis)) //avinas padedamas i prieki
   }
 
   return (
