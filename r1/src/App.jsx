@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
+import randColor from './Functions/randColor';
 // import randColor from './Functions/randColor';
 // import { v4 as uuidv4 } from 'uuid';
 
@@ -8,12 +9,18 @@ import './App.scss';
 function App() {
 
   const [text, setText] = useState('');
+  const [color, setColor] = useState('pink');
   const [select, setSelect] = useState('tree');
-  const [cb, setCb] = useState({ a: false, b: false, c: true, d: true })
+  const [cb, setCb] = useState({ a: false, b: false, c: true, d: true });
+  const [radio, setRadio] = useState('c');
 
   const inputText = e => {
-    setText(e.target.value + '-');
+    setText(e.target.value);
   }
+  const inputColor = e => {
+    setColor(e.target.value)
+  }
+  // setInterval(() => setColor(randColor()), 200);
   const cbClick = c => {
     setCb(checkBox => ({ ...checkBox, [c]: !checkBox[c] })); // () perduodamas objektas ...isardom visas 4 savybes ir perrasom visas savybes apskliaudziant [], tada neigiam 
   }
@@ -45,13 +52,14 @@ function App() {
           C<input type="checkbox" onChange={() => cbClick('c')} checked={cb.c}></input>
           D<input type="checkbox" onChange={() => cbClick('d')} checked={cb.d}></input>
         </fieldset>
-        {/* <fieldset>
+        <fieldset>
           <legend>RADIO</legend>
           A<input type="radio" name="r" value="a" onChange={e => setRadio(e.target.value)} checked={radio === 'a'}></input>
+          {/* //jei radio yra lygu a, jis pacekintas */}
           B<input type="radio" name="r" value="b" onChange={e => setRadio(e.target.value)} checked={radio === 'b'}></input>
           C<input type="radio" name="r" value="c" onChange={e => setRadio(e.target.value)} checked={radio === 'c'}></input>
           D<input type="radio" name="r" value="d" onChange={e => setRadio(e.target.value)} checked={radio === 'd'}></input>
-        </fieldset> */}
+        </fieldset>
       </header>
     </div>
   );
