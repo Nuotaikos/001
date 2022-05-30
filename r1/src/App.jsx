@@ -66,8 +66,8 @@ function App() {
 
 
   // 3.Sukurti komponentą su dviem įvedimo laukeliais. Pradžioje viename laukelyje rodyti skaičių 100 kitame 50. Santykis tarp pirmo ir antro laukelio yra 2. Pakeitus skaičius viename kažkuriame laukelyje turi pasikeisti ir skaičius kitame laukelyje taip, kad santykis išliktų nepakitęs
-  const [pirmas, setPirmas] = useState(0);
-  const [antras, setAntras] = useState(0);
+  const [pirmas, setPirmas] = useState(100);
+  const [antras, setAntras] = useState(50);
 
   const inputPirmas = e => {
     const skaicius = e.target.value;
@@ -80,14 +80,22 @@ function App() {
     setPirmas(skaicius * 2)
   }
 
-
   // 4.Sukurti komponentą su trim select pasirinkimais ir teksto įvedimo laukeliu. Įvedamas tekstas turi būti atvaizduojamas atskirai komponento apačioje. Select pasirinkimai sudaryti iš 5 skirtingų spalvų, 5 skirtingų fontų dydžių ir 5 skirtingų fontų (Arial, Times new Roman ar panašiai) Select pasirinkimų nustatymai turi keisti atvaizduojamo teksto išvaizdą.
+  const [color, setColor] = useState('');
+  const [fontSize, setFontSize] = useState('15');
+  const [fontFamily, setFontFamily] = useState('');
+  const [text, setText] = useState('');
+
+  const inputText = (e) => {
+    setText(e.target.value);
+  };
 
   return (
     <div className="App">
       <header className="App-header" >
         <fieldset>
           <legend>1 uždavinys</legend>
+          <legend>Kvadratukai</legend>
           <div className='kvc'>
             {
               kv.map((k, i) => (<div className='kv' key={i}>{k}</div>))
@@ -116,8 +124,36 @@ function App() {
           <input type="text" onChange={inputPirmas} value={pirmas} />
           <input type="text" onChange={inputAntras} value={antras} />
         </fieldset>
+        <fieldset>
+          <legend>4 uždavinys</legend>
+          <select value={color} onChange={(e) => setColor(e.target.value)}>
+            <option value="red">Color: red</option>
+            <option value="pink">Color: pink</option>
+            <option value="blue">Color: blue</option>
+            <option value="tomato">Color: tomato</option>
+            <option value="green">Color: green</option>
+          </select>
+          <select value={fontSize} onChange={(e) => setFontSize(e.target.value)}>
+            <option value="15">Font size: 15px</option>
+            <option value="25">Font size: 25px</option>
+            <option value="35">Font size: 35px</option>
+            <option value="45">Font size: 45px</option>
+            <option value="55">Font size: 55px</option>
+          </select>
+          <select value={fontFamily} onChange={(e) => setFontFamily(e.target.value)}>
+            <option value="arial">Font family: Arial</option>
+            <option value="helvetica">Font family: Helvetica</option>
+            <option value="lato">Font family: Lato</option>
+            <option value="georgia">Font family: Georgia</option>
+            <option value="verdana">Font family: Verdana</option>
+          </select>
+          <input type="text" onChange={inputText} value={text} />
+          <div className='text' style={{ color: color, fontSize: Number(fontSize), fontFamily: fontFamily }}> {text}</div>
+        </fieldset>
+
+
       </header>
-    </div>
+    </div >
   );
 }
 
