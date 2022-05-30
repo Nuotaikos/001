@@ -34,6 +34,17 @@ function App() {
   const addKatinai = () => {
     setKatinai(x => [...x, [vardas, svoris]]);
   }
+  // 3.Sukurti komponentą su dviem įvedimo laukeliais. Pradžioje viename laukelyje rodyti skaičių 100 kitame 50. Santykis tarp pirmo ir antro laukelio yra 2. Pakeitus skaičius viename kažkuriame laukelyje turi pasikeisti ir skaičius kitame laukelyje taip, kad santykis išliktų nepakitęs
+  const [pirmas, setPirmas] = useState('');
+  const [antras, setAntras] = useState('');
+
+  const inputPirmas = e => {
+    setVardas(e.target.value);
+  }
+  const inputAntras = e => {
+    setSvoris(e.target.value);
+  }
+
   return (
     <div className="App">
       <header className="App-header" >
@@ -59,6 +70,11 @@ function App() {
               kv.map((k, i) => (<div key={i}>{k}</div>))
             }
           </div>
+        </fieldset>
+        <fieldset>
+          <legend>3 uždavinys</legend>
+          <input type="text" placeholder="100" onChange={inputPirmas} value={vardas} />
+          <input type="text" placeholder="50" onChange={inputAntras} value={svoris} />
         </fieldset>
       </header>
     </div>
