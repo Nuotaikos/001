@@ -1,64 +1,64 @@
+// import { useState } from 'react';
 import { useState } from 'react';
 import './App.scss';
-import randColor from './Functions/randColor';
 // import randColor from './Functions/randColor';
+import rand from './Functions/rand';
 // import { v4 as uuidv4 } from 'uuid';
 
 
 
 function App() {
+  // 1. Sukurti komponentą su mygtuku ir įvedimo laukeliu. Įvedus į laukelį skaičių ir paspaudus mygtuką, atsiranda laukelyje nurodytas raudonų kvadratėlių skaičius. Įvedus kitą skaičių ir paspaudus mygtuką, prie jau egzistuojančių kvadratėlių papildomai prisideda naujas laukelyje nurodytas kvadratėlių kiekis. Kiekvieno kvadratėlio viduryje turi būti pavaizduotas rand skaičius 100 - 200.
+  const [kv, setKv] = useState([]);
+  const [skaiciu, setSkaiciu] = useState('');
 
-  const [text, setText] = useState('');
-  const [color, setColor] = useState('pink');
-  const [select, setSelect] = useState('tree');
-  const [cb, setCb] = useState({ a: false, b: false, c: true, d: true });
-  const [radio, setRadio] = useState('c');
-
-  const inputText = e => {
-    setText(e.target.value);
+  const inputSkaiciu = e => {
+    setSkaiciu(e.target.value);
   }
-  const inputColor = e => {
-    setColor(e.target.value)
-  }
-  // setInterval(() => setColor(randColor()), 200);
-  const cbClick = c => {
-    setCb(checkBox => ({ ...checkBox, [c]: !checkBox[c] })); // () perduodamas objektas ...isardom visas 4 savybes ir perrasom visas savybes apskliaudziant [], tada neigiam 
+  const addKv = () => {
+    for (let i = 0; i < skaiciu; i++);
+    setKv(kv => [...kv, rand(100, 200)]);
   }
 
+  // 2. Sukurti komponentą su dviem įvedimo laukeliais, katinuko vardui ir svoriui įvesti. Rodyti visų įvestų katinukų sąrašą. Puslapiui persikrovus, katinukų sąrašas turi išlikti nepakitęs. Katinukus sąraše rūšiuoti nuo storiausio iki ploniausio. Skaičiuoti ir atvaizduoti bendrą katinukų svorį.
+  const [katinai, setKatinai] = useState([]);
+  const [vardas, setVardas] = useState('');
+  const [svoris, setSvoris] = useState('');
+
+  const inputVarda = e => {
+    setVardas(e.target.value);
+  }
+  const inputSvori = e => {
+    setSvoris(e.target.value);
+  }
+  const addKatinai = () => {
+    setKatinai(x => [...x, [vardas, svoris]]);
+  }
   return (
     <div className="App">
-      <header className="App-header" style={{ background: color }}>
+      <header className="App-header" >
         <fieldset>
-          <legend>TEXT</legend>
-          <input type="text" onChange={inputText} value={text}></input>
+          <legend>1 uždavinys</legend>
+          <div className='kvc'>
+            {
+              kv.map((k, i) => (<div className='kv' key={i}>{kv}</div>))
+            }
+          </div>
+          <input type="text" onChange={inputSkaiciu} value={skaiciu} />
+          <button onClick={addKv}>Click</button>
         </fieldset>
         <fieldset>
-          <legend>T-COLOR</legend>
-          <input type="color" onChange={inputColor} value={color}></input>
-        </fieldset>
-        <fieldset>
-          <legend>SELECT</legend>
-          <select value={select} onChange={e => setSelect(e.target.value)}>
-            <option value="one">Vienas</option>
-            <option value="two">Du</option>
-            <option value="tree">Trys</option>
-            <option value="ten">Daug</option>
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend>CHECKBOX</legend>
-          A<input type="checkbox" onChange={() => cbClick('a')} checked={cb.a}></input>
-          B<input type="checkbox" onChange={() => cbClick('b')} checked={cb.b}></input>
-          C<input type="checkbox" onChange={() => cbClick('c')} checked={cb.c}></input>
-          D<input type="checkbox" onChange={() => cbClick('d')} checked={cb.d}></input>
-        </fieldset>
-        <fieldset>
-          <legend>RADIO</legend>
-          A<input type="radio" name="r" value="a" onChange={e => setRadio(e.target.value)} checked={radio === 'a'}></input>
-          {/* //jei radio yra lygu a, jis pacekintas */}
-          B<input type="radio" name="r" value="b" onChange={e => setRadio(e.target.value)} checked={radio === 'b'}></input>
-          C<input type="radio" name="r" value="c" onChange={e => setRadio(e.target.value)} checked={radio === 'c'}></input>
-          D<input type="radio" name="r" value="d" onChange={e => setRadio(e.target.value)} checked={radio === 'd'}></input>
+          <legend>2 uždavinys</legend>
+          <legend>Katinų sąrašas</legend>
+          <input type="text" placeholder="Vardas" onChange={inputVarda} value={vardas} />
+          <input type="text" placeholder="Svoris" onChange={inputSvori} value={svoris} />
+          <button onClick={addKatinai}>Click</button>
+          <div>
+            <legend>Katinai</legend>
+            {
+              kv.map((k, i) => (<div key={i}>{k}</div>))
+            }
+          </div>
         </fieldset>
       </header>
     </div>
