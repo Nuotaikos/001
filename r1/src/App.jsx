@@ -90,6 +90,27 @@ function App() {
     setText(e.target.value);
   };
 
+  //5. Sukurti komponentą su dviem range tipo įvedimais https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range vienu color įvedimu https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color ir mygtukais sukurti ir išsaugoti. Paspaudus mygtuką sukurti, atsiranda naujas kvadratas 100px aukščio ir pločio bei juodu fonu. Keičiant range ir color įvedimus keičiasi ir kvadrato išvaizda. Kvadrato išvaizdą nustato įvedimai: range tipo įvedimai nuo 10 iki 200 ir nustato plotą ir aukštį pikseliais, color- fono spalvą. Paspaudus mygtuką išsaugoti, kvadrato išvaizda išsaugoma ir į nustatymus nebereguoja. Vėl paspaudus mygtuką sukurti- atsiranda naujas reguliuojamas kvadratas.
+  const [color1, setColor1] = useState('');
+  const [kva, setKva] = useState([]);
+  const [width, setWidth] = useState('50');
+  const [height, setHeight] = useState('50');
+
+  const addKva = () => {
+    setKv((k) => [...k, kv]);
+  };
+
+  const inputColor1 = (e) => {
+    setColor1(e.target.value);
+  };
+
+  const inputWidth = (e) => {
+    setWidth(e.target.value);
+  };
+
+  const inputHeight = (e) => {
+    setHeight(e.target.value);
+  };
   return (
     <div className="App">
       <header className="App-header" >
@@ -124,6 +145,7 @@ function App() {
           <input type="text" onChange={inputPirmas} value={pirmas} />
           <input type="text" onChange={inputAntras} value={antras} />
         </fieldset>
+
         <fieldset>
           <legend>4 uždavinys</legend>
           <select value={color} onChange={(e) => setColor(e.target.value)}>
@@ -151,6 +173,26 @@ function App() {
           <div className='text' style={{ color: color, fontSize: Number(fontSize), fontFamily: fontFamily }}> {text}</div>
         </fieldset>
 
+        {/* <fieldset>
+          <legend>5 uždavinys</legend>
+            <div className="kvc">
+
+                {
+                    kv === null ? null : kv.map((kv, i) => <div key={i} className='square' style={{backgroundColor: kv.backgroundColor, width: `${kv.width}px`, height: `${kv.height}px`}}></div>)
+                }
+                {
+                    widthRange && heightRange && color && <div className='square' style={{backgroundColor: color, width: `${widthRange}px`, height: `${heightRange}px`}}></div>
+                }
+
+            </div>
+          <div className="kvc">
+            <input type="range" value={width} min={10} max={200} onChange={e => setWidth(e.target.value)} />
+            <input type="range" value={height} min={10} max={200} onChange={e => setHeight(e.target.value)} />
+            <input type="color" value={color} onChange={e => setColor(e.target.value)} />
+          </div>
+          <button onClick={newKv}>Create</button>
+          <button onClick={saveKv}>Save</button>
+        </fieldset> */}
 
       </header>
     </div >
