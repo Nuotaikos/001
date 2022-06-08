@@ -7,6 +7,12 @@ function allReducer(state, action) {
     case 'go_pink':
       newState = 'pink';
       break;
+    case 'go_w':
+      newState = 'white';
+      break;
+    case 'go_keisk':
+      newState = state === 'red' ? 'pink' : 'red'
+      break;
     default:
       newState = state;
   }
