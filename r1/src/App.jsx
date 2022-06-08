@@ -1,80 +1,84 @@
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import './App.scss';
-import allReducer from './Reducers/allReducer';
-import skaiciaiReducer from './Reducers/skaiciaiReducer';
-// import colorReducer from './Reducers / colorReducer';
-// import numberReducer from './Reducers/numberReducer';
-// import textReducer from './Reducers/textReducer';
-// import kvReducer from './Reducers/kvReducer';
-import rand from './Functions/rand';
-
+import listReducer from './Reducers/listReducer';
 
 function App() {
 
-  // const [color, setColor] = useState('yellow');
-  const [color, dispachColor] = useReducer(allReducer, 'green');
-  const [color1, dispachColor1] = useReducer(allReducer, 'blue')
-  const [skaiciai, dispachSkaiciai] = useReducer(skaiciaiReducer, '0000')
+  const [list, listDispach] = useReducer(listReducer, []);
 
-
-  const goPink = () => {
+  const newList = () => {
     const action = {
-      type: 'go_pink'
+      type: 'new'
     }
-    dispachColor1(action);
+    listDispach(action);
   }
 
-  const goBlue = () => {
+  const sortList = () => {
     const action = {
-      type: 'go_bl'
+      type: 'sort'
     }
-    dispachColor(action);
+    listDispach(action);
   }
 
-  const goWhite = () => {
+  const f5000 = () => {
     const action = {
-      type: 'go_w'
+      type: 'f5000'
     }
-    dispachColor(action);
+    listDispach(action);
   }
-  const goKeisk = () => {
+
+  const f4000 = () => {
     const action = {
-      type: 'go_keisk'
+      type: 'f4000'
     }
-    dispachColor1(action);
+    listDispach(action);
   }
-  const goSkaiciai1 = () => {
+
+  const freset = () => {
     const action = {
-      type: 'go_sk1'
+      type: 'freset'
     }
-    dispachSkaiciai(action);
+    listDispach(action);
   }
-  const goSkaiciai2 = () => {
+
+  const DefSortList = () => {
     const action = {
-      type: 'go_sk2',
-      payload: rand(0, 10)
+      type: 'DefSortList'
     }
-    dispachSkaiciai(action);
+    listDispach(action);
   }
+  const addBlack = () => {
+    const action = {
+      type: 'add'
+    }
+    listDispach(action);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <h1 style={{ background: color1 }}>Labas</h1>
-        <h2 style={{ color: color }}>hello <span> {skaiciai} </span></h2>
+        <h1>REDUCER</h1>
+        <div className="kvc">
+          <button onClick={newList}>New List</button>
+          <button onClick={sortList}>Sort List</button>
+          <button onClick={DefSortList}>Default Sort List</button>
+          <button onClick={f5000}>Filter more 5000</button>
+          <button onClick={f4000}>Filter less 4000</button>
+          <button onClick={freset}>Filter Reset</button>
+          <button onClick={addBlack}>Add to list</button>
 
-        <div className='kvc'>
-          <button onClick={goBlue}>Melyna</button>
-          <button onClick={goWhite}>Blata</button>
-          <button onClick={goKeisk}>Keisk spalva</button>
-          <button onClick={goPink}>Nuspalvink fona</button>
         </div>
-        <div className='kvc'>
-          <button onClick={goSkaiciai1}>Skaiciai 1</button>
-          <button onClick={goSkaiciai2}>Skaiciai 2</button>
+        <div className="kvc">
+          {
+            list.map((o, i) => o.show ? <div key={i} className="kv" style={{ backgroundColor: o.color }}><i>{o.number}</i></div> : null)
+          }
         </div>
+
       </header>
     </div>
   );
+
+
 
 }
 
