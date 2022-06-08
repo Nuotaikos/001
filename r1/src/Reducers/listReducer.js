@@ -25,22 +25,26 @@ function listReducer(state, action) {
         return 0;
       });
       break;
+    case "DefSortList":
+      newState = [...state].sort((a, b) => a.row - b.row);
+      break;
     case "f5000":
       newState = state.map(o => o.number > 5000 ? { ...o, show: true } : { ...o, show: false })
       break;
     case "f4000":
       newState = state.map(o => o.number < 4000 ? { ...o, show: true } : { ...o, show: false })
       break;
+    case "freset":
+      newState = state.map(o => ({ ...o, show: true }))
+      break;
     case 'add':
       newState = [...state, {
         number: ("" + rand(0, 9999)).padStart(4, 0),
-        color: "black",
+        color: '#000000',
         show: true,
-        row: state.lenght
+        row: state.length
       }];
-
       break;
-
     default:
       newState = [...state];
   }
