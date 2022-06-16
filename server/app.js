@@ -17,13 +17,7 @@ const con = mysql.createConnection({
   password: "",
   database: "lama",
 });
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
 
-app.get('/zuikis', (req, res) => {
-  res.send('zuikis!')
-})
 app.get("/medziai", (req, res) => {
   const sql = `
   SELECT

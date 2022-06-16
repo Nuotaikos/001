@@ -22,7 +22,8 @@ function App() {
 
   //Read
   useEffect(() => {
-
+    axios.get('http://localhost:3003/medziai')
+      .then(res => setTrees(res.data));
   }, [lastUpdate]);
 
   // Create
