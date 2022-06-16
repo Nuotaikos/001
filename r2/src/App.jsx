@@ -4,13 +4,16 @@ import './crud.scss';
 import Create from './Components/Create';
 import List from './Components/List';
 import Edit from './Components/Edit';
-// import axios from 'axios';
+import axios from 'axios';
+import TreeContext from './Components/TreeContext';
+
+
 
 function App() {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
-  const [exes, setExes] = useState(null);
+  const [trees, setTrees] = useState(null);
   const [modalData, setModalData] = useState(null);
 
   const [createData, setCreateData] = useState(null);
@@ -53,7 +56,11 @@ function App() {
   }, [editData]);
 
   return (
-    <>
+    <TreeContext.Provider value={
+      {
+        trees
+      }
+    }>
       <div className="container">
         <div className="row">
           <div className="col-4">
@@ -61,12 +68,12 @@ function App() {
             <Create setCreateData={setCreateData}></Create>
           </div>
           <div className="col-8">
-            <List exes={exes} setDeleteData={setDeleteData} setModalData={setModalData}></List>
+            <List trees={trees} setDeleteData={setDeleteData} setModalData={setModalData}></List>
           </div>
         </div>
       </div>
       <Edit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></Edit>
-    </>
+    </TreeContext.Provider>
   );
 
 
