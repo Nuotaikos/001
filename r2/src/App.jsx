@@ -15,7 +15,6 @@ function App() {
 
   const [trees, setTrees] = useState(null);
   const [modalData, setModalData] = useState(null);
-
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
