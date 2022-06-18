@@ -10,7 +10,7 @@ function List() {
   return (
     <div className="card mt-4">
       <div className="card-header">
-        <h2>List of Ex`es</h2>
+        <h2>List of Trees</h2>
       </div>
       <div className="card-body">
         <ul className="list-group">

@@ -18,6 +18,7 @@ const con = mysql.createConnection({
   database: "lama",
 });
 
+
 app.get("/medziai", (req, res) => {
   const sql = `
   SELECT

@@ -27,11 +27,11 @@ function App() {
 
   // Create
   useEffect(() => {
-    if (null === createData) {
-      return;
-    }
-
-    setLastUpdate(Date.now());
+    if (null === createData) return;
+    axios.post('http://localhost:3003/medziai', createData)
+      .then(_ => {
+        setLastUpdate(Date.now());
+      });
 
   }, [createData]);
 
@@ -58,14 +58,15 @@ function App() {
   return (
     <TreeContext.Provider value={
       {
-        trees
+        trees,
+        setCreateData
       }
     }>
       <div className="container">
         <div className="row">
           <div className="col-4">
 
-            <Create setCreateData={setCreateData}></Create>
+            <Create />
           </div>
           <div className="col-8">
             <List trees={trees} setDeleteData={setDeleteData} setModalData={setModalData}></List>

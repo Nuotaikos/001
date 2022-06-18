@@ -32,7 +32,7 @@ function App() {
       <ul>
         {items.results.map(Pokemon => (
           <li key={Pokemon.id}>
-            {Pokemon.name} {Pokemon.url}
+            <b>{Pokemon.name}</b> {Pokemon.url}
           </li>
         ))}
       </ul>
