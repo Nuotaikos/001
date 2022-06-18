@@ -31,6 +31,7 @@ app.get("/medziai", (req, res) => {
     res.send(result);
   });
 });
+
 //CREATE
 // INSERT INTO table_name (column1, column2, column3, ...)
 // VALUES (value1, value2, value3, ...);
@@ -41,6 +42,19 @@ INSERT INTO trees
 VALUES (?, ?, ?)
 `;
   con.query(sql, [req.body.type, req.body.title, req.body.height], (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
+//DELETE
+// DELETE FROM table_name WHERE condition;
+app.delete("/medziai/:treeId", (req, res) => {
+  const sql = `
+DELETE FROM trees
+WHERE id = ?
+`;
+  con.query(sql, [req.params.treeId], (err, result) => {
     if (err) throw err;
     res.send(result);
   });
