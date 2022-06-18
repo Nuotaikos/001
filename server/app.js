@@ -18,7 +18,8 @@ const con = mysql.createConnection({
   database: "lama",
 });
 
-
+//Routes
+//READ
 app.get("/medziai", (req, res) => {
   const sql = `
   SELECT
@@ -26,6 +27,20 @@ app.get("/medziai", (req, res) => {
   FROM trees
 `;
   con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+//CREATE
+// INSERT INTO table_name (column1, column2, column3, ...)
+// VALUES (value1, value2, value3, ...);
+app.post("/medziai", (req, res) => {
+  const sql = `
+INSERT INTO trees
+(type, title, height)
+VALUES (?, ?, ?)
+`;
+  con.query(sql, [req.body.type, req.body.title, req.body.height], (err, result) => {
     if (err) throw err;
     res.send(result);
   });
