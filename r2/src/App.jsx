@@ -72,7 +72,8 @@ function App() {
           </div>
         </div>
       </div>
-      <Edit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></Edit> //gal reikia istrinti setEditData
+      <Edit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></Edit>
+      {/* //gal reikia istrinti setEditData */}
     </TreeContext.Provider>
   );
 
