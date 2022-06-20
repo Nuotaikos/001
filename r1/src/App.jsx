@@ -1,42 +1,34 @@
-import { useEffect, useState } from "react";
-// import { Pokemons } from "./Components/Pokemonai";
-import Pokemon from "./Components/Pokemonai/Pokemons";
+
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import './App.scss';
+
 
 function App() {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+
+
+  const [trees, setTrees] = useState([]);
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          console.log(result);
-          setIsLoaded(true);
-          setItems(result);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [])
+    axios.get('http://localhost:3003/medziai')
+      .then(res => {
+        setTrees(res.data);
+      });
+  }, []);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <ul>
-        {items.results.map(Pokemon => (
-          <li key={Pokemon.id}>
-            <b>{Pokemon.name}</b> {Pokemon.url}
-          </li>
-        ))}
-      </ul>
-    );
-  }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h2>Medziai</h2>
+        {
+          trees.map(t => <div key={t.id}> {t.title}</div>)
+        }
+
+      </header>
+    </div>
+  );
+
 }
+
 export default App;

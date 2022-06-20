@@ -15,9 +15,12 @@ function App() {
 
   const [trees, setTrees] = useState(null);
   const [modalData, setModalData] = useState(null);
+
+
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
+
 
   //Read
   useEffect(() => {
@@ -46,7 +49,7 @@ function App() {
 
   // Edit
   useEffect(() => {
-    if (null === editData) return;
+    if (null === createData) return;
     axios.put('http://localhost:3003/medziai/' + editData.id, editData)
       .then(_ => {
         setLastUpdate(Date.now());
@@ -58,22 +61,22 @@ function App() {
       {
         trees,
         setCreateData,
-        setDeleteData
+        setDeleteData,
+        setModalData,
+        modalData
       }
     }>
       <div className="container">
         <div className="row">
           <div className="col-4">
-
             <Create />
           </div>
           <div className="col-8">
-            <List trees={trees} setModalData={setModalData}></List>
+            <List></List>
           </div>
         </div>
       </div>
-      <Edit setEditData={setEditData} modalData={modalData} setModalData={setModalData}></Edit>
-      {/* //gal reikia istrinti setEditData */}
+      <Edit />
     </TreeContext.Provider>
   );
 
