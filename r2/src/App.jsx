@@ -6,6 +6,7 @@ import List from './Components/List';
 import Edit from './Components/Edit';
 import axios from 'axios';
 import TreeContext from './Components/TreeContext';
+import Message from './Components/Message';
 
 
 
@@ -20,7 +21,7 @@ function App() {
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
-
+  const [message, setMessage] = useState(null)
 
   //Read
   useEffect(() => {
@@ -65,6 +66,7 @@ function App() {
         setModalData,
         modalData,
         setEditData,
+        message
       }
     }>
       <div className="container">
@@ -78,6 +80,7 @@ function App() {
         </div>
       </div>
       <Edit />
+      <Message></Message>
     </TreeContext.Provider>
   );
 

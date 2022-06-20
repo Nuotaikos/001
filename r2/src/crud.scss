@@ -45,3 +45,13 @@ body {
   display: block;
   background-color: #36200C;
 }
+
+.show-message {
+  display: flex;
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  width: 100%;
+  justify-content: flex-end;
+
+}
