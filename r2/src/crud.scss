@@ -46,12 +46,24 @@ body {
   background-color: #36200C;
 }
 
+
 .show-message {
   display: flex;
   position: fixed;
   bottom: 50px;
-  left: 50px;
+  right: 50px;
   width: 100%;
   justify-content: flex-end;
+}
 
+button.with-loader {
+  .spinner-border {
+    display: none;
+  }
+}
+
+button.with-loader:disabled {
+  .spinner-border {
+    display: inline-block;
+  }
 }

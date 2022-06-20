@@ -21,7 +21,11 @@ function App() {
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
-  const [message, setMessage] = useState(null)
+
+  const [message, setMessage] = useState(null);
+
+  const [disableCreate, setDisableCreate] = useState(false);
+
 
   //Read
   useEffect(() => {
@@ -33,9 +37,17 @@ function App() {
   useEffect(() => {
     if (null === createData) return;
     axios.post('http://localhost:3003/medziai', createData)
-      .then(_ => {
+      .then(res => {
+        showMessage(res.data.msg);
         setLastUpdate(Date.now());
-      });
+      })
+      .catch(error => {
+        showMessage({ text: error.message, type: 'danger' });
+      })
+      .then(() => {
+        setDisableCreate(false);
+      })
+
 
   }, [createData]);
 
@@ -43,7 +55,8 @@ function App() {
   useEffect(() => {
     if (null === deleteData) return;
     axios.delete('http://localhost:3003/medziai/' + deleteData.id)
-      .then(_ => {
+      .then(res => {
+        showMessage(res.data.msg);
         setLastUpdate(Date.now());
       });
   }, [deleteData]);
@@ -52,10 +65,18 @@ function App() {
   useEffect(() => {
     if (null === editData) return;
     axios.put('http://localhost:3003/medziai/' + editData.id, editData)
-      .then(_ => {
+      .then(res => {
+        showMessage(res.data.msg);
         setLastUpdate(Date.now());
       });
   }, [editData]);
+
+
+  const showMessage = msg => {
+    setMessage(msg);
+    setTimeout(() => setMessage(null), 5000);
+  }
+
 
   return (
     <TreeContext.Provider value={
@@ -66,7 +87,9 @@ function App() {
         setModalData,
         modalData,
         setEditData,
-        message
+        message,
+        disableCreate,
+        setDisableCreate
       }
     }>
       <div className="container">
@@ -80,7 +103,7 @@ function App() {
         </div>
       </div>
       <Edit />
-      <Message></Message>
+      <Message />
     </TreeContext.Provider>
   );
 
