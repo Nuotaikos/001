@@ -7,26 +7,31 @@ import Edit from './Components/Edit';
 import axios from 'axios';
 import TreeContext from './Components/TreeContext';
 import Message from './Components/Message';
-
+import GoodContext from './Components/goods/GoodContext';
+import CreateGoods from './Components/goods/Create';
 
 
 function App() {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
+  //////////trees - medziu specifika
   const [trees, setTrees] = useState(null);
   const [modalData, setModalData] = useState(null);
-
-
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
 
-  const [message, setMessage] = useState(null);
 
+  ////////goods
+  const [goods, setGoods] = useState(null);
+  const [createDataGoods, setCreateDataGoods] = useState(null);
+
+
+  const [message, setMessage] = useState(null);
   const [disableCreate, setDisableCreate] = useState(false);
 
-
+  //////////////////////Trees///////////////////////////////
   //Read
   useEffect(() => {
     axios.get('http://localhost:3003/medziai')
@@ -70,7 +75,7 @@ function App() {
         setLastUpdate(Date.now());
       });
   }, [editData]);
-
+  //////////////////////Goods///////////////////////////////
 
   const showMessage = msg => {
     setMessage(msg);
@@ -92,18 +97,24 @@ function App() {
         setDisableCreate
       }
     }>
-      <div className="container">
-        <div className="row">
-          <div className="col-4">
-            <Create />
-          </div>
-          <div className="col-8">
-            <List></List>
+      <GoodContext.Provider value={
+        {
+          setCreateData: setCreateDataGoods
+        }}>
+        <div className="container">
+          <div className="row">
+            <div className="col-4">
+              <Create />
+              <CreateGoods />
+            </div>
+            <div className="col-8">
+              <List></List>
+            </div>
           </div>
         </div>
-      </div>
-      <Edit />
-      <Message />
+        <Edit />
+        <Message />
+      </GoodContext.Provider>
     </TreeContext.Provider>
   );
 
