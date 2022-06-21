@@ -9,11 +9,9 @@ function Create() {
 
 
   const handleCreate = () => {
-
     const data = { title };
     setCreateData(data);
     setTitle('');
-
   }
 
 
@@ -29,10 +27,8 @@ function Create() {
           <input type="text" className="form-control" onChange={e => setTitle(e.target.value)} value={title} />
           <small className="form-text text-muted">Enter tree title here.</small>
         </div>
-
         <button type="button" className="btn btn-outline-primary with-loader" onClick={handleCreate}>
-
-          <span >Create</span>
+          Create
         </button>
       </div>
     </div>

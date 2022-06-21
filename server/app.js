@@ -21,11 +21,28 @@ const con = mysql.createConnection({
 
 //Routes
 //READ
+// SELECT column_name(s)
+// FROM table1
+// LEFT JOIN table2
+// ON table1.column_name = table2.column_name;
 app.get("/medziai", (req, res) => {
   const sql = `
   SELECT
+  t.title, g.title AS good, height, type, t.id
+  FROM trees AS t
+  LEFT JOIN goods AS g
+  ON t.good_id = g.id
+`;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+app.get("/gerybes", (req, res) => {
+  const sql = `
+  SELECT
   *
-  FROM trees
+  FROM goods
 `;
   con.query(sql, (err, result) => {
     if (err) throw err;
@@ -33,15 +50,16 @@ app.get("/medziai", (req, res) => {
   });
 });
 //CREATE
+
 // INSERT INTO table_name (column1, column2, column3, ...)
 // VALUES (value1, value2, value3, ...);
 app.post("/medziai", (req, res) => {
   const sql = `
 INSERT INTO trees
-(type, title, height)
-VALUES (?, ?, ?)
+(type, title, height, good_id)
+VALUES (?, ?, ?, ?)
 `;
-  con.query(sql, [req.body.type, req.body.title, req.body.height], (err, result) => {
+  con.query(sql, [req.body.type, req.body.title, req.body.height, req.body.good], (err, result) => {
     if (err) throw err;
     res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
   });
@@ -86,7 +104,6 @@ app.put("/medziai/:treeId", (req, res) => {
     res.send({ result, msg: { text: 'OK, Barsukai', type: 'danger' } });
   });
 });
-
 
 
 app.listen(port, () => {
