@@ -76,6 +76,15 @@ function App() {
       });
   }, [editData]);
   //////////////////////Goods///////////////////////////////
+  // Create
+  useEffect(() => {
+    if (null === createDataGoods) return;
+    axios.post('http://localhost:3003/gerybes', createDataGoods)
+      .then(_ => {
+        setLastUpdate(Date.now());
+      })
+  }, [createDataGoods]);
+
 
   const showMessage = msg => {
     setMessage(msg);
