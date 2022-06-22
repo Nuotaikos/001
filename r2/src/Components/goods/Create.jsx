@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { useState } from "react";
 import GoodContext from "./GoodContext";
 
 function Create() {
@@ -6,7 +7,6 @@ function Create() {
   const { setCreateData } = useContext(GoodContext);
 
   const [title, setTitle] = useState('');
-
 
   const handleCreate = () => {
     const data = { title };

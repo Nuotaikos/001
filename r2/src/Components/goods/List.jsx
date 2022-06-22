@@ -1,10 +1,9 @@
-
 import { useContext } from "react";
-import Good from "./Goods";
-
+import Good from "./Good";
 import GoodContext from "./GoodContext";
 
 function List() {
+
   const { goods } = useContext(GoodContext);
 
   return (

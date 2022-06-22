@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import GoodContext from "./GoodContext";
 
-
 function Good({ good }) {
 
   const { setDeleteData } = useContext(GoodContext);
@@ -10,8 +9,6 @@ function Good({ good }) {
     setDeleteData(good);
   }
 
-
-
   return (
     <li className="list-group-item">
       <div className="item">
@@ -19,7 +16,6 @@ function Good({ good }) {
           <b>{good.title}</b>
         </div>
         <div className="buttons">
-
           <button type="button" className="btn btn-outline-danger ml-2" onClick={handleDelete}>Delete</button>
         </div>
       </div>

@@ -12,27 +12,29 @@ import CreateGoods from './Components/goods/Create';
 import ListGoods from './Components/goods/List';
 
 
+
 function App() {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
-  //////////trees - medziu specifika
+  ///Trees
   const [trees, setTrees] = useState(null);
   const [modalData, setModalData] = useState(null);
   const [createData, setCreateData] = useState(null);
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
 
-
-  ////////goods
+  //Goods
   const [goods, setGoods] = useState(null);
   const [createDataGoods, setCreateDataGoods] = useState(null);
+  const [deleteDataGoods, setDeleteDataGoods] = useState(null);
+
 
 
   const [message, setMessage] = useState(null);
   const [disableCreate, setDisableCreate] = useState(false);
 
-  //////////////////////Trees///////////////////////////////
+  //////////////////TREES?/////////////////////////////
   //Read
   useEffect(() => {
     axios.get('http://localhost:3003/medziai')
@@ -76,8 +78,10 @@ function App() {
         setLastUpdate(Date.now());
       });
   }, [editData]);
-  //////////////////////Goods///////////////////////////////
-  // Create
+
+  //////////////GOODS//////////////////////
+
+
   // Create
   useEffect(() => {
     if (null === createDataGoods) return;
@@ -92,6 +96,26 @@ function App() {
     axios.get('http://localhost:3003/gerybes')
       .then(res => setGoods(res.data));
   }, [lastUpdate]);
+
+  // Delete
+  useEffect(() => {
+    if (null === deleteDataGoods) return;
+    axios.delete('http://localhost:3003/gerybes/' + deleteDataGoods.id)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
+  }, [deleteDataGoods]);
+
+
+
+
+
+
+
+
+
+
 
   const showMessage = msg => {
     setMessage(msg);
@@ -114,11 +138,11 @@ function App() {
         goods
       }
     }>
-      <GoodContext.Provider value={
-        {
-          setCreateData: setCreateDataGoods,
-          goods
-        }}>
+      <GoodContext.Provider value={{
+        setCreateData: setCreateDataGoods,
+        goods,
+        setDeleteData: setDeleteDataGoods
+      }}>
         <div className="container">
           <div className="row">
             <div className="col-4">
