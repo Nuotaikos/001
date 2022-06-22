@@ -2,13 +2,13 @@
 import { useContext } from "react";
 import Good from "./Goods";
 
-import GoodContext from "./TreeContext";
+import GoodContext from "./GoodContext";
 
 function List() {
   const { goods } = useContext(GoodContext);
 
   return (
-    <div className="card mt-4">
+    <div className="card mt-4 mb-4">
       <div className="card-header">
         <h2>List of Goods</h2>
       </div>

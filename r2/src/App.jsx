@@ -9,6 +9,7 @@ import TreeContext from './Components/TreeContext';
 import Message from './Components/Message';
 import GoodContext from './Components/goods/GoodContext';
 import CreateGoods from './Components/goods/Create';
+import ListGoods from './Components/goods/List';
 
 
 function App() {
@@ -115,13 +116,15 @@ function App() {
     }>
       <GoodContext.Provider value={
         {
-          setCreateData: setCreateDataGoods
+          setCreateData: setCreateDataGoods,
+          goods
         }}>
         <div className="container">
           <div className="row">
             <div className="col-4">
               <Create />
               <CreateGoods />
+              <ListGoods />
             </div>
             <div className="col-8">
               <List></List>
