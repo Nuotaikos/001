@@ -1,22 +1,15 @@
-import { useContext } from "react";
-import GoodContext from "./FrontContext";
-
 function Good({ good }) {
-
-  const { setDeleteData } = useContext(GoodContext);
-
-  const handleDelete = () => {
-    setDeleteData(good);
-  }
 
   return (
     <li className="list-group-item">
       <div className="item">
-        <div className="content">
-          <b>{good.title}</b>
-        </div>
-        <div className="buttons">
-          <button type="button" className="btn btn-outline-danger ml-2" onClick={handleDelete}>Delete</button>
+        <div className="nest-content">
+          <h2>{good.title}</h2>
+          <ul className="list-group">
+            {
+              good.tree_titles ? good.tree_titles.split(',').map((t, i) => <li key={i} className="list-group-item">{t}</li>) : null
+            }
+          </ul>
         </div>
       </div>
     </li>
