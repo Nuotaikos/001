@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import GoodContext from "./GoodContext";
+import GoodContext from "./FrontContext";
 
 function Good({ good }) {
 
@@ -16,10 +16,7 @@ function Good({ good }) {
           <b>{good.title}</b>
         </div>
         <div className="buttons">
-          {
-            good.trees_count ? '(' + good.trees_count + ')' : <button type="button" className="btn btn-outline-danger ml-2" onClick={handleDelete}>Delete</button>
-          }
-
+          <button type="button" className="btn btn-outline-danger ml-2" onClick={handleDelete}>Delete</button>
         </div>
       </div>
     </li>
