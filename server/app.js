@@ -115,6 +115,18 @@ VALUES (?)
   });
 });
 
+app.post("/front/komentarai", (req, res) => {
+  const sql = `
+INSERT INTO comments
+(com, tree_id)
+VALUES (?, ?)
+`;
+  con.query(sql, [req.body.com, req.body.treeId], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: 'OK, Zuiki', type: 'success' } });
+  });
+});
+
 //DELETE
 // DELETE FROM table_name WHERE condition;
 app.delete("/medziai/:treeId", (req, res) => {

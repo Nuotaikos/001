@@ -1,3 +1,5 @@
+import './bootstrap.css';
+
 import Back from "./Back";
 import {
   BrowserRouter,
