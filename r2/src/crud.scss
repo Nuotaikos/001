@@ -20,6 +20,18 @@ body {
       justify-content: flex-start;
     }
 
+    .nest-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      li {
+        background-color: aliceblue;
+        color: pink;
+      }
+    }
+
     .buttons {
       display: flex;
       align-items: center;
