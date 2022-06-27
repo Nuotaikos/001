@@ -38,6 +38,7 @@ app.get("/medziai", (req, res) => {
     res.send(result);
   });
 });
+
 app.get("/gerybes", (req, res) => {
   const sql = `
 SELECT
@@ -53,6 +54,23 @@ ORDER BY trees_count DESC
     res.send(result);
   });
 });
+
+app.get("/front/gerybes", (req, res) => {
+  const sql = `
+SELECT
+g.title, g.id, COUNT(t.id) AS trees_count, GROUP_CONCAT(t.title) as tree_titles
+FROM trees AS t
+RIGHT JOIN goods AS g
+ON t.good_id = g.id
+GROUP BY g.id
+ORDER BY g.title
+`;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
+
 
 //CREATE
 
