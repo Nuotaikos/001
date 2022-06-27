@@ -71,6 +71,22 @@ ORDER BY g.title
   });
 });
 
+app.get("/front/medziai", (req, res) => {
+  const sql = `
+SELECT
+t.title, g.title AS good, height, type, t.id, GROUP_CONCAT(c.com, '-^o^-') AS coms
+FROM trees AS t
+LEFT JOIN goods AS g
+ON t.good_id = g.id
+LEFT JOIN comments AS c
+ON c.tree_id = t.id
+GROUP BY t.id
+`;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
 
 //CREATE
 
