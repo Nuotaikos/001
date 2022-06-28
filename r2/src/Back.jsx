@@ -94,7 +94,10 @@ function Back() {
   // Read
   useEffect(() => {
     axios.get('http://localhost:3003/gerybes')
-      .then(res => setGoods(res.data));
+      .then(res => {
+        console.log(res.data);
+        setGoods(res.data);
+      });
   }, [lastUpdate]);
 
   // Delete
@@ -109,6 +112,14 @@ function Back() {
 
 
 
+  // DELETE COMMENT
+  const handleDeleteComment = id => {
+    axios.delete('http://localhost:3003/komentarai/' + id)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      });
+  }
 
 
 
@@ -135,7 +146,8 @@ function Back() {
         message,
         disableCreate,
         setDisableCreate,
-        goods
+        goods,
+        handleDeleteComment
       }
     }>
       <GoodContext.Provider value={{
