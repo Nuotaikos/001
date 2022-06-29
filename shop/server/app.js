@@ -18,6 +18,31 @@ const con = mysql.createConnection({
   database: "la_ma_shop",
 });
 
+// CATS
+app.post("/admin/cats", (req, res) => {
+  const sql = `
+  INSERT INTO cats
+  (title)
+  VALUES (?)
+  `;
+  con.query(sql, [req.body.title], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: 'OK, new Cat was created', type: 'success' } });
+  });
+});
+
+
+app.get("/admin/cats", (req, res) => {
+  const sql = `
+SELECT *
+FROM cats
+ORDER BY title
+`;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.send(result);
+  });
+});
 app.listen(port, () => {
   console.log(`Bebras klauso porto Nr ${port}`);
 });
