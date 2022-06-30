@@ -4,22 +4,26 @@ import Nav from './Nav';
 import { useEffect, useState } from 'react';
 import BackContext from './BackContext';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 
 function Back({ show }) {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   // const [messages, setMessages] = useState([]); //tuscias masyvas, nes nezinome kiek bus zinuciu. Jei zinotume kiek zinuciu, butu irasytas zinuciu kiekis
-  const [messages, setMessages] = useState([
-    { id: 4646, text: 'valio', type: 'danger' },
-    { id: 466, text: 'katinai ateina', type: 'info' },
-    { id: 446, text: 'rytoj bus gera diena', type: 'success' }
-  ]);
+  // const [messages, setMessages] = useState([
+  //   { id: 4646, text: 'valio', type: 'danger' },
+  //   { id: 466, text: 'katinai ateina', type: 'info' },
+  //   { id: 446, text: 'rytoj bus gera diena', type: 'success' }
+  // ]);
+  const [messages, setMessages] = useState([])
 
 
   const [cats, setCats] = useState(null);
   const [createCat, setCreateCat] = useState(null);
   const [deleteCat, setDeleteCat] = useState(null);
+  const [editCat, setEditeCat] = useState(null);
+  const [modalCat, setModalCat] = useState(null);
 
   // Read
   useEffect(() => {
@@ -54,17 +58,38 @@ function Back({ show }) {
       })
   }, [deleteCat]);
 
-  const showMessage = () => {
+  //Edit
+  useEffect(() => {
+    if (null === editCat) return;
+    axios.put('http://localhost:3003/admin/cats/' + editCat.id, editCat)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      })
+      .catch(error => {
+        showMessage({ text: error.message, type: 'danger' }); //jei ateina klaida, rodo zinute
+      })
+  }, [editCat]);
 
+
+  const showMessage = (m) => {
+    const id = uuidv4();
+    m.id = id;
+    setMessages(msg => [...msg, m]);
+    setTimeout(() => {
+      setMessages(mes => mes.filter(ms => ms.id !== id))
+    }, 5000);
   }
-
 
   return (
     <BackContext.Provider value={{
       setCreateCat,
       cats,
       setDeleteCat,
-      messages
+      messages,
+      setEditeCat,
+      setModalCat,
+      modalCat
     }}>
       {
         show === 'admin' ?
