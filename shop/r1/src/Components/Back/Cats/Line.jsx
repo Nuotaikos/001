@@ -3,14 +3,14 @@ import BackContext from '../BackContext';
 
 function Line({ line }) { //line yra id ir title
 
-  const { setDeleteCat } = useContext(BackContext);
+  const { setDeleteCat, setModalCat } = useContext(BackContext);
 
   const handleDelete = () => {
     setDeleteCat(line); //tas kuris turi mygtuka delete
   }
 
   const handleEdit = () => {
-    // setModalData(tree);
+    setModalCat(line);
   }
 
   return (
