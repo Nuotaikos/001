@@ -56,7 +56,7 @@ WHERE id = ?
   });
 });
 
-//edit
+//edit - redagavimas modale 
 app.put("/admin/cats/:id", (req, res) => {
   const sql = `
   UPDATE cats
@@ -66,6 +66,19 @@ app.put("/admin/cats/:id", (req, res) => {
   con.query(sql, [req.body.title, req.params.id], (err, result) => {
     if (err) throw err;
     res.send({ result, msg: { text: 'OK, Cat updated', type: 'success' } });
+  });
+});
+
+// Products
+app.post("/admin/products", (req, res) => {
+  const sql = `
+  INSERT INTO products
+  (title, price, in_stock, cats_id)
+  VALUES (?, ?, ?, ?)
+  `;
+  con.query(sql, [req.body.title, req.body.price, req.body.inStock, req.body.cat], (err, result) => {
+    if (err) throw err;
+    res.send({ result, msg: { text: 'OK, new product was created', type: 'success' } });
   });
 });
 
