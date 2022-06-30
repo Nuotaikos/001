@@ -9,6 +9,13 @@ import axios from 'axios';
 function Back({ show }) {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
+  // const [messages, setMessages] = useState([]); //tuscias masyvas, nes nezinome kiek bus zinuciu. Jei zinotume kiek zinuciu, butu irasytas zinuciu kiekis
+  const [messages, setMessages] = useState([
+    { id: 4646, text: 'valio', type: 'danger' },
+    { id: 466, text: 'katinai ateina', type: 'info' },
+    { id: 446, text: 'rytoj bus gera diena', type: 'success' }
+  ]);
+
 
   const [cats, setCats] = useState(null);
   const [createCat, setCreateCat] = useState(null);
@@ -56,7 +63,8 @@ function Back({ show }) {
     <BackContext.Provider value={{
       setCreateCat,
       cats,
-      setDeleteCat
+      setDeleteCat,
+      messages
     }}>
       {
         show === 'admin' ?
