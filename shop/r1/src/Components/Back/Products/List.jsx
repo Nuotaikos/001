@@ -4,7 +4,7 @@ import BackContext from '../BackContext';
 
 function List() {
 
-  const { cats } = useContext(BackContext);
+  const { products } = useContext(BackContext);
 
   return (
     <div className="card mt-4">
@@ -14,7 +14,7 @@ function List() {
       <div className="card-body">
         <ul className="list-group">
           {
-            cats ? cats.map(cat => <Line key={cat.id} line={cat}></Line>) : null
+            products ? products.map(product => <Line key={product.id} line={product}></Line>) : null
           }
         </ul>
       </div>

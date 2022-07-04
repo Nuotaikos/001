@@ -18,22 +18,28 @@ function Back({ show }) {
   // ]);
   const [messages, setMessages] = useState([])
 
-
   const [cats, setCats] = useState(null);
   const [createCat, setCreateCat] = useState(null);
   const [deleteCat, setDeleteCat] = useState(null);
-  const [editCat, setEditeCat] = useState(null);
+  const [editCat, setEditCat] = useState(null);
   const [modalCat, setModalCat] = useState(null);
 
+
+  const [products, setProducts] = useState(null);
   const [createProduct, setCreateProduct] = useState(null);
+  const [deleteProduct, setDeleteProduct] = useState(null);
 
   // Read
   useEffect(() => {
     axios.get('http://localhost:3003/admin/cats')
       .then(res => setCats(res.data));
   }, [lastUpdate]);
+  useEffect(() => {
+    axios.get('http://localhost:3003/admin/products')
+      .then(res => setProducts(res.data));
+  }, [lastUpdate]);
 
-  // Create cat
+  // Create
   useEffect(() => {
     if (null === createCat) return;
     axios.post('http://localhost:3003/admin/cats', createCat)
@@ -45,8 +51,6 @@ function Back({ show }) {
         showMessage({ text: error.message, type: 'danger' });
       })
   }, [createCat]);
-
-  // Create product
   useEffect(() => {
     if (null === createProduct) return;
     axios.post('http://localhost:3003/admin/products', createProduct)
@@ -68,11 +72,23 @@ function Back({ show }) {
         setLastUpdate(Date.now());
       })
       .catch(error => {
-        showMessage({ text: error.message, type: 'danger' }); //jei ateina klaida, rodo zinute
+        showMessage({ text: error.message, type: 'danger' });
       })
   }, [deleteCat]);
+  useEffect(() => {
+    if (null === deleteProduct) return;
+    axios.delete('http://localhost:3003/admin/products/' + deleteProduct.id)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      })
+      .catch(error => {
+        showMessage({ text: error.message, type: 'danger' });
+      })
+  }, [deleteProduct]);
 
-  //Edit
+
+  // Edit
   useEffect(() => {
     if (null === editCat) return;
     axios.put('http://localhost:3003/admin/cats/' + editCat.id, editCat)
@@ -81,9 +97,10 @@ function Back({ show }) {
         setLastUpdate(Date.now());
       })
       .catch(error => {
-        showMessage({ text: error.message, type: 'danger' }); //jei ateina klaida, rodo zinute
+        showMessage({ text: error.message, type: 'danger' });
       })
   }, [editCat]);
+
 
 
   const showMessage = (m) => {
@@ -95,16 +112,20 @@ function Back({ show }) {
     }, 5000);
   }
 
+
   return (
     <BackContext.Provider value={{
       setCreateCat,
       cats,
       setDeleteCat,
       messages,
-      setEditeCat,
+      setEditCat,
       setModalCat,
       modalCat,
-      setCreateProduct
+      setCreateProduct,
+      products,
+      showMessage,
+      setDeleteProduct
     }}>
       {
         show === 'admin' ?

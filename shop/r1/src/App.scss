@@ -17,6 +17,20 @@ body {
       display: flex;
       align-items: center;
       justify-content: flex-start;
+
+      .box {
+        width: 15px;
+        height: 15px;
+        border: 1px solid coral;
+        margin: 0 10px;
+      }
+
+      .cat {
+        font-size: 75%;
+        color: skyblue;
+        text-decoration: underline;
+        margin: 0 0 0 40px;
+      }
     }
 
     .nest-content {
@@ -116,7 +130,7 @@ body {
   display: flex;
   position: absolute;
   bottom: 50px;
-  right: 0px;
+  right: 0;
   width: 100%;
   justify-content: flex-end;
   flex-direction: column;
@@ -124,28 +138,20 @@ body {
   z-index: 3;
 
   .alert-danger {
-    color: #721c24;
     background-color: #f8d7dac2;
-    border-color: #f5c6cb;
   }
 
   .alert-info {
-    color: #0c5460;
     background-color: #d1ecf1c2;
-    border-color: #bee5eb;
   }
 
   .alert-success {
-    color: #155724;
     background-color: #d4eddac2;
-    border-color: #c3e6cb;
   }
 
-  ;
-
   div {
-    width: 30%;
-    margin-right: 10%;
+    width: 50%;
+    margin-right: 30px;
   }
 }
 
