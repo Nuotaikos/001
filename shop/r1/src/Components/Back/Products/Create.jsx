@@ -8,7 +8,7 @@ function Create() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [inStock, setInStock] = useState(false);
-  const [cat, setCat] = useState('');
+  const [cat, setCat] = useState('0');
 
   const handleCreate = () => {
     if (cat === '0') {
@@ -22,7 +22,6 @@ function Create() {
     setPrice('');
     setInStock(false);
     setCat('0');
-    //viska nunulinam
   }
 
   return (

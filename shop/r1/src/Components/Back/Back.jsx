@@ -1,22 +1,16 @@
-import CatsCrud from './Cats/Crud';
-import ProductsCrud from './Products/Crud';
-import Nav from './Nav';
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import BackContext from './BackContext';
+import CatsCrud from './Cats/Crud';
+import Nav from './Nav';
+import ProductsCrud from './Products/Crud';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-
 
 function Back({ show }) {
 
   const [lastUpdate, setLastUpdate] = useState(Date.now());
-  // const [messages, setMessages] = useState([]); //tuscias masyvas, nes nezinome kiek bus zinuciu. Jei zinotume kiek zinuciu, butu irasytas zinuciu kiekis
-  // const [messages, setMessages] = useState([
-  //   { id: 4646, text: 'valio', type: 'danger' },
-  //   { id: 466, text: 'katinai ateina', type: 'info' },
-  //   { id: 446, text: 'rytoj bus gera diena', type: 'success' }
-  // ]);
-  const [messages, setMessages] = useState([])
+
+  const [messages, setMessages] = useState([]);
 
   const [cats, setCats] = useState(null);
   const [createCat, setCreateCat] = useState(null);
@@ -28,6 +22,8 @@ function Back({ show }) {
   const [products, setProducts] = useState(null);
   const [createProduct, setCreateProduct] = useState(null);
   const [deleteProduct, setDeleteProduct] = useState(null);
+  const [editProduct, setEditProduct] = useState(null);
+  const [modalProduct, setModalProduct] = useState(null);
 
   // Read
   useEffect(() => {
@@ -100,6 +96,17 @@ function Back({ show }) {
         showMessage({ text: error.message, type: 'danger' });
       })
   }, [editCat]);
+  useEffect(() => {
+    if (null === editProduct) return;
+    axios.put('http://localhost:3003/admin/products/' + editProduct.id, editProduct)
+      .then(res => {
+        showMessage(res.data.msg);
+        setLastUpdate(Date.now());
+      })
+      .catch(error => {
+        showMessage({ text: error.message, type: 'danger' });
+      })
+  }, [editProduct]);
 
 
 
@@ -125,7 +132,10 @@ function Back({ show }) {
       setCreateProduct,
       products,
       showMessage,
-      setDeleteProduct
+      setDeleteProduct,
+      setEditProduct,
+      setModalProduct,
+      modalProduct,
     }}>
       {
         show === 'admin' ?

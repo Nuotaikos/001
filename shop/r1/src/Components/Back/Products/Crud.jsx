@@ -13,12 +13,13 @@ function Crud() {
             <Create />
           </div>
           <div className="col-8">
-            <List></List>
+            <List />
           </div>
         </div>
       </div>
-      <Edit></Edit>
+      <Edit />
     </>
+
   )
 }
 export default Crud;
