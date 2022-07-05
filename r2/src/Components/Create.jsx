@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import TreeContext from "./TreeContext";
 
@@ -10,6 +11,7 @@ function Create() {
   const [type, setType] = useState('1');
   const [height, setHeight] = useState('');
   const [good, setGood] = useState('0');
+  const fileInput = useRef();
 
   const handleCreate = () => {
     setDisableCreate(true);
@@ -21,7 +23,29 @@ function Create() {
     setGood('0');
   }
 
+  const file = fileInput.current.files[0];
 
+  //  if (file) {
+  //       getBase64(file)
+  //           .then(photo => {
+  //               console.log(photo);
+  //               setCreateData({
+  //                   title,
+  //                   height,
+  //                   type,
+  //                   photo,
+  //                   size
+  //               });
+  //           });
+  //   } else {
+  //       setCreateData({
+  //           title,
+  //           height,
+  //           type,
+  //           photo: null,
+  //           size
+  //       });
+  //   }
 
   return (
     <div className="card mt-4">
