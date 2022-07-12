@@ -13,7 +13,6 @@ import { login, logout, authConfig } from './Functions/auth';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 
-
 function App() {
 
   return (
