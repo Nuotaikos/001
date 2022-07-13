@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import BackContext from '../BackContext';
 
-function Line({ line }) { //line yra id ir title
+function Line({ line }) {
 
   const { setDeleteCat, setModalCat } = useContext(BackContext);
 
   const handleDelete = () => {
-    setDeleteCat(line); //tas kuris turi mygtuka delete
+    setDeleteCat(line);
   }
 
   const handleEdit = () => {

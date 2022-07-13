@@ -1,10 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import BackContext from "../BackContext";
 
-
 function Edit() {
 
-  const { modalCat, setEditeCat, setModalCat } = useContext(BackContext);
+  const { modalCat, setEditCat, setModalCat } = useContext(BackContext);
 
 
   const [title, setTitle] = useState('');
@@ -13,13 +12,12 @@ function Edit() {
     if (null === modalCat) {
       return;
     }
-
     setTitle(modalCat.title);
   }, [modalCat]);
 
   const handleEdit = () => {
     const data = { title, id: modalCat.id };
-    setEditeCat(data);
+    setEditCat(data);
     setModalCat(null);
   }
 
@@ -53,6 +51,5 @@ function Edit() {
     </div>
   );
 }
-
 
 export default Edit;
