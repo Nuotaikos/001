@@ -1,11 +1,7 @@
-
-import { NavLink, Link } from 'react-router-dom';
-import Messages from './Messages';
-
+import { NavLink, Link } from "react-router-dom";
+import Messages from "./Messages";
 
 function Nav() {
-
-
 
   return (
     <>
